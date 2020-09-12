@@ -13,3 +13,7 @@ Criar Pasta Models
 Adicionar model User.php na pasta
 alterar o namespace em User.php e em config/auth onde chama User.php
 
+
+Usando AdminLTE no projeto 
+https://github.com/jeroennoten/Laravel-AdminLTE
+
