@@ -232,11 +232,27 @@ return [
 
     'menu' => [
 
+        ['header' => 'Administrador'],
         [
             'text' => 'Planos',
             'url'  => 'admin/plans',
-            // 'can'  => 'manage-blog',
+            'icon' => 'far fa-list-alt',
         ],
+        // [
+        //     'text' => 'Modules',
+        //     'url'  => 'admin/acl/modules',
+        //     'icon' => 'fas fa-clipboard-list',
+        // ],
+        // [
+        //     'text' => 'Roles',
+        //     'url'  => 'admin/acl/roles',
+        //     'icon' => 'fas fa-user-tie',
+        // ],
+        // [
+        //     'text' => 'Permissions',
+        //     'url'  => 'admin/acl/permissions',
+        //     'icon' => 'fas fa-fingerprint',
+        // ],
     ],
 
     /*
