@@ -18,7 +18,7 @@ class PlanController extends Controller
     }
 
     public function index() {
-        $plans = $this->plan->latest()->paginate();
+        $plans = $this->plan->latest()->paginate(1);
         return view('admin.pages.plans.index', compact('plans'));
     }
 
@@ -30,8 +30,16 @@ class PlanController extends Controller
         $data = $request->all();
         $data['url'] = Str::kebab($request->name);
 
-        //$this->plan->create($request->all());
         $this->plan->create($data);
+        //$this->plan->create($request->all());
         return redirect()->route('plans.index');
+    }
+
+    public function show ($url) {
+        $plan = $this->plan->where('url', $url)->first();
+        if(!$plan) {
+            return redirect()->back();
+        }
+        return view('admin.pages.plans.show', compact('plan'));
     }
 }
