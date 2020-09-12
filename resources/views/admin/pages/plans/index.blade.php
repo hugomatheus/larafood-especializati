@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            #filtros
+            <a href="{{route('plans.create')}}" class="btn btn-success">Cadastrar</a>
         </div>
         <div class="card-body">
             <table class="table table-condensed">
