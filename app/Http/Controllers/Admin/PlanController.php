@@ -17,16 +17,19 @@ class PlanController extends Controller
         $this->plan = $plan;
     }
 
-    public function index() {
+    public function index()
+    {
         $plans = $this->plan->latest()->paginate(1);
         return view('admin.pages.plans.index', compact('plans'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('admin.pages.plans.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $data = $request->all();
         $data['url'] = Str::kebab($request->name);
 
@@ -35,7 +38,8 @@ class PlanController extends Controller
         return redirect()->route('plans.index');
     }
 
-    public function show ($url) {
+    public function show ($url)
+    {
         $plan = $this->plan->where('url', $url)->first();
         if(!$plan) {
             return redirect()->back();
@@ -43,7 +47,8 @@ class PlanController extends Controller
         return view('admin.pages.plans.show', compact('plan'));
     }
 
-    public function destroy ($id) {
+    public function destroy ($id)
+    {
         $plan = $this->plan->where('id',$id)->first();
         if(!$plan) {
           return redirect()->back();
@@ -51,5 +56,11 @@ class PlanController extends Controller
 
         $plan->delete();
         return redirect()->route('plans.index');
+    }
+
+    public function search(Request $request)
+    {
+        $plans = $this->plan->search($request->filter);
+        return view('admin.pages.plans.index', compact('plans'));
     }
 }
