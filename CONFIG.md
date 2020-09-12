@@ -17,3 +17,15 @@ alterar o namespace em User.php e em config/auth onde chama User.php
 Usando AdminLTE no projeto 
 https://github.com/jeroennoten/Laravel-AdminLTE
 
+
+Banco de dados
+Ao criar o bd utilizar o charset: utf8mb4_unicode_ci
+pois é o charset utilizado pelo laravel, para confirmar tem informando em config > database.php nas configurações do mysql
+
+
+Alguns comandos do artisan:
+
+php artisan make:model Models/Plan -m (Criando migration Plan e sua migration)
+
+php artisan migrate (Rodas todas as migrations que ainda não foram rodadas)
+
