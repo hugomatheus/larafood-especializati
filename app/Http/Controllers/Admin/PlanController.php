@@ -38,16 +38,36 @@ class PlanController extends Controller
         return redirect()->route('plans.index');
     }
 
-    public function show ($url)
+    public function show($id)
     {
-        $plan = $this->plan->where('url', $url)->first();
+        $plan = $this->plan->where('id', $id)->first();
         if(!$plan) {
             return redirect()->back();
         }
         return view('admin.pages.plans.show', compact('plan'));
     }
 
-    public function destroy ($id)
+
+    public function edit($id)
+    {
+        $plan = $this->plan->where('id', $id)->first();
+        if(!$plan) {
+            return redirect()->back();
+        }
+        return view('admin.pages.plans.edit', compact('plan'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $plan = $this->plan->where('id', $id)->first();
+        if(!$plan) {
+            return redirect()->back();
+        }
+        $plan->update($request->all());
+        return redirect()->route('plans.index');
+    }
+
+    public function destroy($id)
     {
         $plan = $this->plan->where('id',$id)->first();
         if(!$plan) {

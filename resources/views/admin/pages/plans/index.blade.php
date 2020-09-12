@@ -6,7 +6,7 @@
     {{-- <h1>{{ ucfirst(trans('messages.plan')) }}</h1> --}}
     <h1>Planos</h1>
 
-@endsection
+@stop
 @section('content')
     <div class="container-fluid">
 
@@ -49,12 +49,12 @@
                                 {{-- <a class="btn btn-primary btn-sm" href="{{route('admin.acl.plans.modules.create', $plan->id)}}" data-toggle="tooltip" title="modulos!">
                                     <i class="fas fa-clipboard-list "></i>
                                 </a> --}}
-                                <a class="btn btn-primary btn-sm" href="{{route('plans.show', $plan->url)}}" data-toggle="tooltip" title="Visualizar">
+                                <a class="btn btn-primary btn-sm" href="{{route('plans.show', $plan->id)}}" data-toggle="tooltip" title="Visualizar">
                                     <i class="far fa-list-alt"></i>
                                 </a>
-                                {{-- <a class="btn btn-info btn-sm" href="{{route('admin.acl.plans.edit', ['plan' => $plan->id])}}" data-toggle="tooltip" title="Edit!">
+                                <a class="btn btn-info btn-sm" href="{{route('plans.edit', $plan->id)}}" data-toggle="tooltip" title="Editar">
                                     <i class="fas fa-pencil-alt"></i>
-                                </a> --}}
+                                </a>
                                 <a class="btn btn-danger btn-sm" href="{{route('plans.destroy', $plan->id)}}" data-toggle="tooltip" title="deletar" onclick='event.preventDefault();if(confirm("Deseja realmente excluir ?")){document.getElementById("form-delete-{{$plan->id}}").submit();}'>
                                     <i class="fas fa-trash"></i>
                                 </a>
@@ -85,7 +85,7 @@
         </div>
 
     </div>
-@endsection
+@stop
 
 
 
