@@ -12,7 +12,7 @@ class Plan extends Model
     {
         $results = $this->where('name', 'LIKE', "%{$filter}%")
                         ->orWhere('description', 'LIKE', "%{$filter}%")
-                        ->paginate();
+                        ->paginate(2);
         return $results;
     }
 }

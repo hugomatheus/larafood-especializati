@@ -6,8 +6,7 @@
     {{-- <h1>{{ ucfirst(trans('messages.plan')) }}</h1> --}}
     <h1>Planos</h1>
 
-@stop
-
+@endsection
 @section('content')
     <div class="container-fluid">
 
@@ -21,7 +20,7 @@
                     <form action="{{route('plans.search')}}" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
-                            <input type="text" name="filter" class="form-control float-right">
+                        <input type="text" name="filter" class="form-control float-right" value="{{$filters['filter'] ?? ''}}">
                             <div class="input-group-append">
                               <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                             </div>
@@ -72,7 +71,12 @@
               <!-- /.card-body -->
               <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
-                    {!! $plans->links() !!}
+                    @if (isset($filters))
+                        {!! $plans->appends($filters)->links() !!}
+                    @else
+                        {!! $plans->links() !!}
+                    @endif
+
                </ul>
               </div>
             </div>

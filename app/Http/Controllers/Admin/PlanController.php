@@ -19,7 +19,7 @@ class PlanController extends Controller
 
     public function index()
     {
-        $plans = $this->plan->latest()->paginate(1);
+        $plans = $this->plan->latest()->paginate(2);
         return view('admin.pages.plans.index', compact('plans'));
     }
 
@@ -60,7 +60,8 @@ class PlanController extends Controller
 
     public function search(Request $request)
     {
+        $filters = $request->except('_token');
         $plans = $this->plan->search($request->filter);
-        return view('admin.pages.plans.index', compact('plans'));
+        return view('admin.pages.plans.index', compact('plans', 'filters'));
     }
 }
