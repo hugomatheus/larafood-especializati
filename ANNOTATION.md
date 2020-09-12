@@ -25,7 +25,9 @@ pois é o charset utilizado pelo laravel, para confirmar tem informando em confi
 
 Alguns comandos do artisan:
 
-php artisan make:model Models/Plan -m (Criando migration Plan e sua migration)
+php artisan make:model Models/Plan -m (Criando model Plan e sua migration)
 
 php artisan migrate (Rodas todas as migrations que ainda não foram rodadas)
+
+php artisan make:controller Admin/PlanController (Criando controller PlanController)
 
