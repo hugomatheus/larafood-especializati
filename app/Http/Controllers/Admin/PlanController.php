@@ -17,7 +17,7 @@ class PlanController extends Controller
     }
 
     public function index() {
-        $plans = $this->plan->all();
+        $plans = $this->plan->latest()->paginate();
         return view('admin.pages.plans.index', compact('plans'));
     }
 }

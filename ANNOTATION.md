@@ -31,3 +31,17 @@ php artisan migrate (Rodas todas as migrations que ainda não foram rodadas)
 
 php artisan make:controller Admin/PlanController (Criando controller PlanController)
 
+
+Algumas informações sobre o orm do laravel
+
+Plan::all(); (retorna todos os planos)
+Plan::paginate(1); (retorna planos paginados com 1 item por pagina, o default é 15)
+Plan::latest()->paginate(1) (latest retorna do mais recente para o mais antigo com base no created_at,  praticamente um orderby desc)
+
+
+
+
+
+algumas informações sobre blade 
+
+$plans->links()  (Mostra a paginação)
