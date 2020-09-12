@@ -42,4 +42,14 @@ class PlanController extends Controller
         }
         return view('admin.pages.plans.show', compact('plan'));
     }
+
+    public function destroy ($id) {
+        $plan = $this->plan->where('id',$id)->first();
+        if(!$plan) {
+          return redirect()->back();
+        }
+
+        $plan->delete();
+        return redirect()->route('plans.index');
+    }
 }

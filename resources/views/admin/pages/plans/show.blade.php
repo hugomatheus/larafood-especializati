@@ -46,11 +46,11 @@
     </div>
   </div>
   <div class="col-12">
-  {{-- <form action="{{route('plans.destroy', ['plan' => $plan->id])}}" method="POST">
+  <form action="{{route('plans.destroy', $plan->id)}}" method="POST">
      @csrf
      @method('DELETE')
      <button onclick="return confirm('Deseja realmente excluir ?');" type="submit" class="btn btn-danger float-right"><i class="fas fa-trash"></i> Excluir</button>
-  </form> --}}
+  </form>
 
   </div>
   </div>

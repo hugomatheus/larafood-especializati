@@ -56,13 +56,13 @@
                                 {{-- <a class="btn btn-info btn-sm" href="{{route('admin.acl.plans.edit', ['plan' => $plan->id])}}" data-toggle="tooltip" title="Edit!">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a> --}}
-                                {{-- <a class="btn btn-danger btn-sm" href="{{route('admin.acl.plans.destroy', ['plan' => $plan->id])}}" data-toggle="tooltip" title="delete!" onclick='event.preventDefault();if(confirm("Deseja realmente excluir ?")){document.getElementById("form-delete-{{$plan->id}}").submit();}'>
+                                <a class="btn btn-danger btn-sm" href="{{route('plans.destroy', $plan->id)}}" data-toggle="tooltip" title="deletar" onclick='event.preventDefault();if(confirm("Deseja realmente excluir ?")){document.getElementById("form-delete-{{$plan->id}}").submit();}'>
                                     <i class="fas fa-trash"></i>
-                                </a> --}}
-                                {{-- <form id="form-delete-{{$plan->id}}" style="display: none" action="{{route('admin.acl.plans.destroy', ['plan' => $plan->id])}}" method="POST">
+                                </a>
+                                <form id="form-delete-{{$plan->id}}" style="display: none" action="{{route('plans.destroy', $plan->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                </form> --}}
+                                </form>
                           </td>
                         </tr>
                     @endforeach
