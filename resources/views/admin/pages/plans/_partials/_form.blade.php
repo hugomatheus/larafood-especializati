@@ -5,7 +5,7 @@
         <h3 class="card-title">DADOS DO PLANO</h3>
       </div>
         <div class="card-body">
-          {{-- @include('admin.includes._alerts') --}}
+          @include('admin.includes._alerts')
           <div class="form-group">
             <label for="name">Nome</label>
             <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"  value="{{$plan->name ?? old('name')}}">
@@ -26,7 +26,7 @@
           </div>
           <div class="form-group">
             <label for="price">Preço</label>
-            <input type="number" pattern="[0-9]+([,\.][0-9]+)?" min="0" step="any" id="price" name="price" class="form-control price-mask {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{$plan->price ?? old('price')}}">
+            <input id="price" name="price" class="form-control price-mask {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{$plan->price ?? old('price')}}">
             @if ($errors->has('price'))
               <div class="invalid-feedback">
                   {{ $errors->first('price') }}
