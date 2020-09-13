@@ -53,3 +53,19 @@ Plan::latest()->paginate(1) (latest retorna do mais recente para o mais antigo c
 algumas informações sobre blade 
 
 $plans->links()  (Mostra a paginação)
+
+
+Rotas 
+php artisan route:list
+
+Route::resource('plans', 'PlanController');
+
+Rota resouce igual a :
+
+// Route::get('plans', 'PlanController@index')->name('plans.index');
+// Route::get('plans/create', 'PlanController@create')->name('plans.create');
+// Route::post('plans', 'PlanController@store')->name('plans.store');
+// Route::get('plans/{id}', 'PlanController@show')->name('plans.show');
+// Route::get('plans/{id}/edit', 'PlanController@edit')->name('plans.edit');
+// Route::put('plans/{id}', 'PlanController@update')->name('plans.update');
+// Route::delete('plans/{id}', 'PlanController@destroy')->name('plans.destroy');
