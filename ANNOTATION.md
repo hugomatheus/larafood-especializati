@@ -33,6 +33,10 @@ php artisan make:controller Admin/PlanController (Criando controller PlanControl
 
 php artisan make:request StoreUpdatePlanRequest (Criando validação)
 
+php artisan make:observer PlanObserver (cria um observer que serve pra automatizar algo seja antes, depois e durante um cadastro/atualização de uma entidade)
+
+php artisan make:observer PlanObserver --model=Models/Plan (cria o observer já com a asocciação do model) 
+
 
 Algumas informações sobre o orm do laravel
 
