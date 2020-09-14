@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class PlanController extends Controller
 {
 
-    private $plan;
+    protected $plan;
 
     public function __construct(Plan $plan)
     {
@@ -38,7 +38,8 @@ class PlanController extends Controller
     public function show($id)
     {
         $plan = $this->plan->where('id', $id)->first();
-        if(!$plan) {
+        if(!$plan)
+        {
             return redirect()->back();
         }
         return view('admin.pages.plans.show', compact('plan'));
@@ -48,7 +49,8 @@ class PlanController extends Controller
     public function edit($id)
     {
         $plan = $this->plan->where('id', $id)->first();
-        if(!$plan) {
+        if(!$plan)
+        {
             return redirect()->back();
         }
         return view('admin.pages.plans.edit', compact('plan'));
@@ -57,7 +59,8 @@ class PlanController extends Controller
     public function update(StoreUpdatePlanRequest $request, $id)
     {
         $plan = $this->plan->where('id', $id)->first();
-        if(!$plan) {
+        if(!$plan)
+        {
             return redirect()->back();
         }
         $plan->update($request->all());
@@ -67,7 +70,8 @@ class PlanController extends Controller
     public function destroy($id)
     {
         $plan = $this->plan->where('id',$id)->first();
-        if(!$plan) {
+        if(!$plan)
+        {
           return redirect()->back();
         }
 

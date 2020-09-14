@@ -3,7 +3,7 @@
 @section('title', 'Detalhes do plano')
 
 @section('content_header')
-    <h1>Detalhes do plano</h1>
+    <h1>Informações do plano</h1>
 @stop
 
 @section('content')
@@ -42,6 +42,9 @@
       </p>
       <p class="text-sm">Descrição
         <b class="d-block">{{$plan->description}}</b>
+      </p>
+      <p class="text-sm">
+      <b class="d-block"><a href="{{route('plans.details.index', $plan->id)}}">Detalhes do plano</a></b>
       </p>
     </div>
   </div>

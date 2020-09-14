@@ -36,7 +36,7 @@
                       <th>ID</th>
                       <th>Nome</th>
                       <th>Preço</th>
-                      <th></th>
+                      <th style="width: 100px">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
