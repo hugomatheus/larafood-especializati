@@ -32,7 +32,7 @@ class PlanController extends Controller
     public function store(StoreUpdatePlanRequest $request)
     {
         $this->plan->create($request->all());
-        return redirect()->route('plans.index');
+        return redirect()->route('plans.index')->with('success', 'Registro cadastrado com sucesso!');
     }
 
     public function show($id)
@@ -64,7 +64,7 @@ class PlanController extends Controller
             return redirect()->back();
         }
         $plan->update($request->all());
-        return redirect()->route('plans.index');
+        return redirect()->route('plans.index')->with('success', 'Registro alterado com sucesso!');
     }
 
     public function destroy($id)
@@ -76,7 +76,7 @@ class PlanController extends Controller
         }
 
         $plan->delete();
-        return redirect()->route('plans.index');
+        return redirect()->route('plans.index')->with('success', 'Registro deletado com sucesso!');
     }
 
     public function search(Request $request)

@@ -5,7 +5,7 @@
 @section('content_header')
     {{-- <h1>{{ ucfirst(trans('messages.plan')) }}</h1> --}}
     <h1>Planos</h1>
-
+    @include('admin.includes._alerts')
 @stop
 @section('content')
     <div class="container-fluid">

@@ -5,9 +5,10 @@
 @section('content_header')
     {{-- <h1>{{ ucfirst(trans('messages.plan')) }}</h1> --}}
     <h1>Detalhes do plano: {{$plan->name}}</h1>
-
+    @include('admin.includes._alerts')
 @stop
 @section('content')
+
     <div class="container-fluid">
 
         <div class="row">
@@ -32,7 +33,9 @@
                             <td>{{$detail->id}}</td>
                             <td>{{$detail->name}}</td>
                             <td class="project-actions text-right">
-
+                                <a class="btn btn-primary btn-sm" href="{{route('plans.details.show', [$plan->id, $detail->id])}}" data-toggle="tooltip" title="Visualizar">
+                                    <i class="far fa-list-alt"></i>
+                                </a>
                                 <a class="btn btn-info btn-sm" href="{{route('plans.details.edit', [$plan->id, $detail->id])}}" data-toggle="tooltip" title="Editar">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
