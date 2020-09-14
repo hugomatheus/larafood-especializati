@@ -5,6 +5,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 
 
+    // Routes Permissions
+
+    Route::any('permissions/search', 'ACL\PermissionController@search')->name('permissions.search');
+    Route::resource('permissions', 'ACL\PermissionController');
+
     // Routes Modules
 
     Route::any('modules/search', 'ACL\ModuleController@search')->name('modules.search');

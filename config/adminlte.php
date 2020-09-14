@@ -248,11 +248,11 @@ return [
         //     'url'  => 'admin/acl/roles',
         //     'icon' => 'fas fa-user-tie',
         // ],
-        // [
-        //     'text' => 'Permissions',
-        //     'url'  => 'admin/acl/permissions',
-        //     'icon' => 'fas fa-fingerprint',
-        // ],
+        [
+            'text' => 'Permissão',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-fingerprint',
+        ],
     ],
 
     /*
