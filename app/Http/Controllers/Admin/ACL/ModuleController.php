@@ -33,7 +33,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.modules.create');
     }
 
     /**
@@ -44,7 +44,8 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->module->create($request->all());
+        return redirect()->route('modules.index')->with('success', 'Registro cadastrado com sucesso!');
     }
 
     /**
