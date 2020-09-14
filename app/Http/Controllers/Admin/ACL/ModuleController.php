@@ -57,7 +57,12 @@ class ModuleController extends Controller
      */
     public function show($id)
     {
-        //
+        $module = $this->module->find($id);
+        if(!$module)
+        {
+            return redirect()->back();
+        }
+        return view('admin.pages.modules.show', compact('module'));
     }
 
     /**
@@ -92,7 +97,7 @@ class ModuleController extends Controller
         }
 
         $module->update($request->all());
-        return redirect()->route('modules.index')->with('success', 'Registro alterado com sucesso');
+        return redirect()->route('modules.index')->with('success', 'Registro alterado com sucesso!');
     }
 
     /**
@@ -103,6 +108,13 @@ class ModuleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $module = $this->module->find($id);
+        if(!$module)
+        {
+            return redirect()->back();
+        }
+
+        $module->delete();
+        return redirect()->route('modules.index')->with('success', 'Registro deletado com sucesso!');
     }
 }
