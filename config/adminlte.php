@@ -240,7 +240,7 @@ return [
         ],
         [
             'text' => 'Módulos',
-            'url'  => 'admin/acl/modules',
+            'url'  => 'admin/modules',
             'icon' => 'fas fa-clipboard-list',
         ],
         // [

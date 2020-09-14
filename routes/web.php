@@ -3,6 +3,13 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
+
+
+    // Routes Modules
+
+    Route::any('modules/search', 'ModuleController@search')->name('modules.search');
+    Route::resource('modules', 'ACL\ModuleController');
+
     // Routes Details Plan
 
     Route::resource('plans.details', 'DetailPlanController');
