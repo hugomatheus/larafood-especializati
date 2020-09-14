@@ -88,9 +88,17 @@ class DetailPlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($planId, $detailId)
     {
-        //
+        $plan = $this->plan->where('id', $planId)->first();
+        $detail = $this->detailPlan->find($detailId);
+
+        if(!$plan || !$detail)
+        {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.plans.details.edit', compact('plan', 'detail'));
     }
 
     /**
@@ -100,9 +108,18 @@ class DetailPlanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $planId, $detailId)
     {
-        //
+        $plan = $this->plan->where('id', $planId)->first();
+        $detail = $this->detailPlan->find($detailId);
+
+        if(!$plan || !$detail)
+        {
+            return redirect()->back();
+        }
+
+        $detail->update($request->all());
+        return redirect()->route('plans.details.index', $plan->id);
     }
 
     /**

@@ -18,7 +18,7 @@
 
           <div class="row">
             <div class="col-12">
-            <a href="{{route('plans.index')}}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{route('plans.details.index', $plan->id)}}" class="btn btn-secondary">Cancelar</a>
               <input type="submit" value="{{$submit}}" class="btn btn-success float-right">
             </div>
           </div>

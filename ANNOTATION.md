@@ -57,6 +57,10 @@ Plan::paginate(1); (retorna planos paginados com 1 item por pagina, o default é
 
 Plan::latest()->paginate(1) (latest retorna do mais recente para o mais antigo com base no created_at,  praticamente um orderby desc)
 
+Plan::find($id)
+
+Plan::where('id', $id)->first();
+
 
 
 
