@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\ACL;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateModuleRequest;
 use App\Models\Module;
 use Illuminate\Http\Request;
 
@@ -39,10 +40,10 @@ class ModuleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateModuleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUpdateModuleRequest $request)
     {
         $this->module->create($request->all());
         return redirect()->route('modules.index')->with('success', 'Registro cadastrado com sucesso!');
@@ -78,11 +79,11 @@ class ModuleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateModuleRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateModuleRequest $request, $id)
     {
         $module = $this->module->find($id);
         if(!$module)

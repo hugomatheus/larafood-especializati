@@ -56,7 +56,7 @@ class DetailPlanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateDetailPlanRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUpdateDetailPlanRequest $request, $planId)
@@ -113,7 +113,7 @@ class DetailPlanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreUpdateDetailPlanRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
