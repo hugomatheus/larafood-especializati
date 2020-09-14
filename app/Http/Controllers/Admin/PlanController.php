@@ -69,10 +69,15 @@ class PlanController extends Controller
 
     public function destroy($id)
     {
-        $plan = $this->plan->where('id',$id)->first();
+        $plan = $this->plan->with(['details'])->where('id',$id)->first();
         if(!$plan)
         {
           return redirect()->back();
+        }
+
+        if($plan->details->count() > 0)
+        {
+            return redirect()->route('plans.index')->with('error', 'Necessário remover os detalhes vinculados ao plano!');
         }
 
         $plan->delete();
