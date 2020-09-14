@@ -41,9 +41,15 @@ class DetailPlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($planId)
     {
-        //
+        $plan = $this->plan->where('id', $planId)->first();
+
+        if(!$plan)
+        {
+            return redirect()->back();
+        }
+        return view('admin.pages.plans.details.create', compact('plan'));
     }
 
     /**
@@ -52,9 +58,17 @@ class DetailPlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $planId)
     {
-        //
+        $plan = $this->plan->where('id', $planId)->first();
+
+        if(!$plan)
+        {
+            return redirect()->back();
+        }
+
+        $plan->details()->create($request->all());
+        return redirect()->route('plans.details.index', $planId);
     }
 
     /**

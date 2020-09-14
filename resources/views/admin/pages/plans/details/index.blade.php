@@ -13,6 +13,9 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+                <div class="card-header">
+                    <a href="{{route('plans.details.create', $plan->id)}}" class="btn btn-success">Cadastrar</a>
+                </div>
 
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">
