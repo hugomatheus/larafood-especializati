@@ -67,7 +67,12 @@ class ModuleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $module = $this->module->find($id);
+        if(!$module)
+        {
+            return redirect()->back();
+        }
+        return view('admin.pages.modules.edit', compact('module'));
     }
 
     /**
@@ -79,7 +84,14 @@ class ModuleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $module = $this->module->find($id);
+        if(!$module)
+        {
+            return redirect()->back();
+        }
+
+        $module->update($request->all());
+        return redirect()->route('modules.index')->with('success', 'Registro alterado com sucesso');
     }
 
     /**

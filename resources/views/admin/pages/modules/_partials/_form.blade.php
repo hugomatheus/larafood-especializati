@@ -8,7 +8,7 @@
           @include('admin.includes._alerts')
           <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"  value="{{$plan->name ?? old('name')}}">
+            <input type="text" id="name" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"  value="{{$module->name ?? old('name')}}">
              @if ($errors->has('name'))
                 <div class="invalid-feedback">
                     {{ $errors->first('name') }}
@@ -17,7 +17,7 @@
           </div>
           <div class="form-group">
             <label for="description">Descrição</label>
-            <textarea id="description" name="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" rows="4">{{$plan->description ?? old('description')}}</textarea>
+            <textarea id="description" name="description" class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" rows="4">{{$module->description ?? old('description')}}</textarea>
              @if ($errors->has('description'))
                 <div class="invalid-feedback">
                     {{ $errors->first('description') }}
