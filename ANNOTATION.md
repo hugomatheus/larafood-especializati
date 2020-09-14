@@ -46,8 +46,10 @@ php artisan make:observer PlanObserver (cria um observer que serve pra automatiz
 
 php artisan make:observer PlanObserver --model=Models/Plan (cria o observer já com a asocciação do model) 
 
-php artisan view:clear
 php artisan cache:clear
+php artisan route:clear 
+php artisan config:clear
+php artisan view:clear
 
 Algumas informações sobre o orm do laravel
 

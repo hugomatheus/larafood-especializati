@@ -34,7 +34,7 @@
                             <td>{{$detail->name}}</td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="{{route('plans.details.show', [$plan->id, $detail->id])}}" data-toggle="tooltip" title="Visualizar">
-                                    <i class="far fa-list-alt"></i>
+                                    <i class="far fa-file-alt"></i>
                                 </a>
                                 <a class="btn btn-info btn-sm" href="{{route('plans.details.edit', [$plan->id, $detail->id])}}" data-toggle="tooltip" title="Editar">
                                     <i class="fas fa-pencil-alt"></i>

@@ -238,11 +238,11 @@ return [
             'url'  => 'admin/plans',
             'icon' => 'far fa-list-alt',
         ],
-        // [
-        //     'text' => 'Modules',
-        //     'url'  => 'admin/acl/modules',
-        //     'icon' => 'fas fa-clipboard-list',
-        // ],
+        [
+            'text' => 'Módulos',
+            'url'  => 'admin/acl/modules',
+            'icon' => 'fas fa-clipboard-list',
+        ],
         // [
         //     'text' => 'Roles',
         //     'url'  => 'admin/acl/roles',

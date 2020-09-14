@@ -50,7 +50,7 @@
                                     <i class="fas fa-clipboard-list "></i>
                                 </a> --}}
                                 <a class="btn btn-primary btn-sm" href="{{route('plans.show', $plan->id)}}" data-toggle="tooltip" title="Visualizar">
-                                    <i class="far fa-list-alt"></i>
+                                    <i class="far fa-file-alt"></i>
                                 </a>
                                 <a class="btn btn-info btn-sm" href="{{route('plans.edit', $plan->id)}}" data-toggle="tooltip" title="Editar">
                                     <i class="fas fa-pencil-alt"></i>
