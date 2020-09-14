@@ -117,4 +117,22 @@ class ModuleController extends Controller
         $module->delete();
         return redirect()->route('modules.index')->with('success', 'Registro deletado com sucesso!');
     }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+        $modules = $this->module->search($request->filter);
+
+        // Alternativa
+
+        // $modules = $this->module->where(function($query) use ($request){
+        //                                 if($request->filter) {
+        //                                     $query->where('name','LIKE', "%$request->filter%");
+        //                                     $query->orWhere('description','LIKE', "%$request->filter%");
+        //                                 }
+        //                               })
+        //                         ->paginate();
+
+        return view('admin.pages.modules.index', compact('modules','filters'));
+    }
 }
