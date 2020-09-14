@@ -9,6 +9,8 @@ chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 sudo service apache2 restart
 
+obs: não funcionou com 775 somente com 777
+
 Criar Pasta Models 
 Adicionar model User.php na pasta
 alterar o namespace em User.php e em config/auth onde chama User.php
@@ -21,6 +23,13 @@ https://github.com/jeroennoten/Laravel-AdminLTE
 Banco de dados
 Ao criar o bd utilizar o charset: utf8mb4_unicode_ci
 pois é o charset utilizado pelo laravel, para confirmar tem informando em config > database.php nas configurações do mysql
+
+php artisan migrate:rollback
+
+php artisan migrate:rollback --step=1
+
+php artisan migrate
+
 
 
 Alguns comandos do artisan:
@@ -37,6 +46,8 @@ php artisan make:observer PlanObserver (cria um observer que serve pra automatiz
 
 php artisan make:observer PlanObserver --model=Models/Plan (cria o observer já com a asocciação do model) 
 
+php artisan view:clear
+php artisan cache:clear
 
 Algumas informações sobre o orm do laravel
 
@@ -69,3 +80,5 @@ Rota resouce igual a :
 // Route::get('plans/{id}/edit', 'PlanController@edit')->name('plans.edit');
 // Route::put('plans/{id}', 'PlanController@update')->name('plans.update');
 // Route::delete('plans/{id}', 'PlanController@destroy')->name('plans.destroy');
+
+
