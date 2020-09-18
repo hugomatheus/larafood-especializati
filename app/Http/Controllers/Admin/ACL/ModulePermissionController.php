@@ -61,4 +61,20 @@ class ModulePermissionController extends Controller
         $module->permissions()->attach($request->permissions);
         return redirect()->route('modules.permissions', $moduleId)->with('success', 'Permissões vinculadas com sucesso');
     }
+
+
+    public function detachModulePermission($moduleId, $permissionId)
+    {
+        $module = $this->module->find($moduleId);
+        $permission = $this->permission->find($permissionId);
+
+        if(!$module || !$permission)
+        {
+            return redirect()->back();
+        }
+
+
+        $module->permissions()->detach($permission);
+        return redirect()->route('modules.permissions', $moduleId)->with('success', 'Permissões desvinculada com sucesso');
+    }
 }

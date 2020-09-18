@@ -22,7 +22,7 @@
                   <thead>
                     <tr>
                       <th>Nome</th>
-                      <th style="width: 150px">Ação</th>
+                      <th style="width: 100px">Ação</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -31,13 +31,9 @@
                             <td>{{$permission->name}}</td>
                             <td class="project-actions text-right">
 
-                                {{-- <a class="btn btn-danger btn-sm" href="{{route('admin.acl.modules.permissions.destroy', [$module->id, $permission->id])}}" data-toggle="tooltip" title="delete!" onclick='event.preventDefault();if(confirm("Deseja realmente desassociar a permissão ?")){document.getElementById("form-delete-{{$permission->id}}").submit();}'>
-                                <i class="fas fa-trash"></i>
+                                <a class="btn btn-danger btn-sm" href="{{route('modules.permissions.detach', [$module->id, $permission->id])}}" data-toggle="tooltip" title="desvincular permissão">
+                                    <i class="fas fa-trash"></i>
                                 </a>
-                            <form id="form-delete-{{$permission->id}}" style="display: none" action="{{route('admin.acl.modules.permissions.destroy', [$module->id, $permission->id])}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                            </form> --}}
 
                             </td>
                         </tr>

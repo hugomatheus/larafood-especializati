@@ -60,8 +60,10 @@
                           </ul>
                           <div class="row">
                             <div class="col-12">
+                                <a href="{{route('modules.permissions', $module->id)}}" class="btn btn-secondary float-left">Voltar</a>
                                 <input type="submit" value="Vincular" class="btn btn-success float-right">
                             </div>
+
                           </div>
                         </div>
                    </form>
