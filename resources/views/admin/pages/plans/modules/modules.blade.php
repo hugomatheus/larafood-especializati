@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', "Módulos vinculados a permissão $permission->name")
+@section('title', "Módulos do plano $plan->name")
 
 @section('content_header')
-    <h1>Módulos vinculados a permissão - {{$permission->name}}</h1>
+    <h1>Módulos do plano - {{$plan->name}}</h1>
     @include('admin.includes._alerts')
 @stop
 
@@ -13,7 +13,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-              <a href="{{route('permissions.index')}}" data-toggle="tooltip" title="Lista de permissões" class="btn btn-success">Permissões</a>
+              <a href="{{route('plans.modules.available', $plan->id)}}" data-toggle="tooltip" title="Vincular os módulos que ainda não foram associadas" class="btn btn-success">Vincular novos módulos</a>
                 <h3 class="card-title"></h3>
                 <div class="card-tools"></div>
               </div>
@@ -22,7 +22,7 @@
                   <thead>
                     <tr>
                       <th>Nome</th>
-                      <th style="width: 100px"></th>
+                      <th style="width: 100px">Ação</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -31,9 +31,9 @@
                             <td>{{$module->name}}</td>
                             <td class="project-actions text-right">
 
-                                {{-- <a class="btn btn-danger btn-sm" href="{{route('modules.permissions.detach', [$module->id, $permission->id])}}" data-toggle="tooltip" title="desvincular permissão">
+                                <a class="btn btn-danger btn-sm" href="{{route('plans.modules.detach', [$plan->id, $module->id])}}" data-toggle="tooltip" title="desvincular módulo">
                                     <i class="fas fa-trash"></i>
-                                </a> --}}
+                                </a>
 
                             </td>
                         </tr>

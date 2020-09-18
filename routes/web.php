@@ -3,8 +3,21 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
+    // Routes Module x Plan
+
+    Route::get('modules/{id}/plans', 'ACL\ModulePlanController@plans')->name('modules.plans');
+
+
+    // Routes Plan x Module
+
+    Route::any('plans/{id}/modules/create', 'ACL\ModulePlanController@modulesAvailable')->name('plans.modules.available');
+    Route::post('plans/{id}/modules/store', 'ACL\ModulePlanController@attachModulePlan')->name('plans.modules.attach');
+    Route::get('plans/{id}/modules/{planId}/detach', 'ACL\ModulePlanController@detachModulePlan')->name('plans.modules.detach');
+    Route::get('plans/{id}/modules', 'ACL\ModulePlanController@modules')->name('plans.modules');
+
+
     // Routes Permission x Module
-    
+
     Route::get('permissions/{id}/modules', 'ACL\ModulePermissionController@modules')->name('permissions.modules');
 
 

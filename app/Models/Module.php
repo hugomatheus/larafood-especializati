@@ -20,6 +20,12 @@ class Module extends Model
     }
 
 
+    // - Get Plan
+
+    public function plans()
+    {
+        return $this->belongsToMany(Plan::class);
+    }
 
     public function search($filter = null)
     {

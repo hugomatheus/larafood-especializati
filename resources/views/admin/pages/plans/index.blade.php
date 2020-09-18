@@ -46,9 +46,9 @@
                             <td>{{$plan->name}}</td>
                             <td>R$ {{number_format($plan->price, 2, ',', '.')}}</td>
                             <td class="project-actions text-right">
-                                {{-- <a class="btn btn-primary btn-sm" href="{{route('admin.acl.plans.modules.create', $plan->id)}}" data-toggle="tooltip" title="modulos!">
+                                <a class="btn btn-secondary btn-sm" href="{{route('plans.modules', $plan->id)}}" data-toggle="tooltip" title="Associação de módulos">
                                     <i class="fas fa-clipboard-list "></i>
-                                </a> --}}
+                                </a>
                                 <a class="btn btn-primary btn-sm" href="{{route('plans.show', $plan->id)}}" data-toggle="tooltip" title="Visualizar">
                                     <i class="far fa-file-alt"></i>
                                 </a>

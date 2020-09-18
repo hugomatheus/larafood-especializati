@@ -44,6 +44,9 @@
                             <td>{{$module->id}}</td>
                             <td>{{$module->name}}</td>
                             <td class="project-actions text-right">
+                                <a class="btn btn-secondary btn-sm" href="{{route('modules.plans', $module->id)}}" data-toggle="tooltip" title="Associação com os planos">
+                                    <i class="far fa-list-alt"></i>
+                                </a>
                                 <a class="btn btn-secondary btn-sm" href="{{route('modules.permissions', $module->id)}}" data-toggle="tooltip" title="Associação de permissões">
                                     <i class="fas fa-fingerprint"></i>
                                 </a>

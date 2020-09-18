@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', "Módulos vinculados a permissão $permission->name")
+@section('title', "Planos vinculados ao módulo $module->name")
 
 @section('content_header')
-    <h1>Módulos vinculados a permissão - {{$permission->name}}</h1>
+    <h1>Planos vinculados ao módulo - {{$module->name}}</h1>
     @include('admin.includes._alerts')
 @stop
 
@@ -13,7 +13,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-              <a href="{{route('permissions.index')}}" data-toggle="tooltip" title="Lista de permissões" class="btn btn-success">Permissões</a>
+              <a href="{{route('modules.index')}}" data-toggle="tooltip" title="Lista de permissões" class="btn btn-success">Módulos</a>
                 <h3 class="card-title"></h3>
                 <div class="card-tools"></div>
               </div>
@@ -26,16 +26,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($modules as $module)
+                    @foreach ($plans as $plan)
                         <tr>
-                            <td>{{$module->name}}</td>
-                            <td class="project-actions text-right">
-
-                                {{-- <a class="btn btn-danger btn-sm" href="{{route('modules.permissions.detach', [$module->id, $permission->id])}}" data-toggle="tooltip" title="desvincular permissão">
-                                    <i class="fas fa-trash"></i>
-                                </a> --}}
-
-                            </td>
+                            <td>{{$plan->name}}</td>
                         </tr>
                     @endforeach
 
@@ -45,9 +38,9 @@
               <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
                   @if (isset($filters))
-                  {!! $modules->appends($filters)->links() !!}
+                  {!! $plans->appends($filters)->links() !!}
                   @else
-                    {!! $modules->links() !!}
+                    {!! $plans->links() !!}
                   @endif
 
                 </ul>
