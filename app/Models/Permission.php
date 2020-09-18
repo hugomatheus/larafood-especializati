@@ -8,6 +8,15 @@ class Permission extends Model
 {
     protected $fillable = ['name', 'description'];
 
+    // Relationships:
+
+    //   - Get Module:
+
+    public function modules()
+    {
+        return $this->belongsToMany(Module::class);
+    }
+
     public function search($filter) {
         $results = $this->where('name', 'LIKE', "%$filter%")
                         ->orWhere('description', 'LIKE', "%$filter%")

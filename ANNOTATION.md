@@ -51,6 +51,8 @@ php artisan route:clear
 php artisan config:clear
 php artisan view:clear
 
+php artisan make:migration create_module_permission_table 
+
 Algumas informações sobre o orm do laravel
 
 Plan::all(); (retorna todos os planos)

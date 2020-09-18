@@ -3,7 +3,9 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
+    // Routes Module x Permission
 
+    Route::get('modules/{id}/permissions', 'ACL\ModulePermissionController@permissions')->name('modules.permissions');
 
     // Routes Permissions
 
