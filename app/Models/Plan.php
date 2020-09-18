@@ -25,6 +25,13 @@ class Plan extends Model
         return $this->hasMany(DetailPlan::class);
     }
 
+    // - Get Tenent
+
+    public function tenants()
+    {
+        return $this->hasMany(Tenant::class);
+    }
+
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%{$filter}%")
