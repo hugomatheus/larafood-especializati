@@ -54,11 +54,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 });
 
 
+// Route Site Home
 
+Route::get('/', 'Site\SiteController@index')->name('site.home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route Auth
 
