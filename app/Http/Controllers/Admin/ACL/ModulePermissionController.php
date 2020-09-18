@@ -18,14 +18,14 @@ class ModulePermissionController extends Controller
 
     public function permissions($moduleId)
     {
-        $module = $this->module->with(['permissions'])->find($moduleId);
+        $module = $this->module->find($moduleId);
 
         if(!$module)
         {
             return redirect()->back();
         }
 
-        $permissions = $module->permissions;
+        $permissions = $module->permissions()->paginate();
         return view('admin.pages.modules.permissions.permissions', compact('module', 'permissions'));
 
     }

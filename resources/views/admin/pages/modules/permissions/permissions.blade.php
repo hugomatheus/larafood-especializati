@@ -62,7 +62,7 @@
                   </tbody>
                 </table>
               </div>
-              {{-- <div class="card-footer clearfix">
+              <div class="card-footer clearfix">
                 <ul class="pagination pagination-sm m-0 float-right">
                   @if (isset($filters))
                   {!! $permissions->appends($filters)->links() !!}
@@ -71,7 +71,7 @@
                   @endif
 
                 </ul>
-              </div> --}}
+              </div>
             </div>
           </div>
         </div>
