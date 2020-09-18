@@ -21,12 +21,22 @@ class Module extends Model
 
 
 
-
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%$filter%")
                         ->orWhere('description', 'LIKE', "%$filter%")
                         ->paginate();
         return $results;
+    }
+
+    public function permissionsAvailable()
+    {
+        $permissions = Permission::whereNotIn('id', function($query) {
+                                $query->select('ModulePermission.permission_id');
+                                $query->from('module_permission AS ModulePermission');
+                                $query->where('ModulePermission.module_id', $this->id);
+                        })->paginate();
+
+        return $permissions;
     }
 }

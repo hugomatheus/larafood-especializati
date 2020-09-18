@@ -39,9 +39,7 @@ class ModulePermissionController extends Controller
             return redirect()->back();
         }
 
-        $permissions = $module->permissions()->paginate();
-
-        $permissions = $this->permission->paginate();
+        $permissions = $module->permissionsAvailable();
         return view('admin.pages.modules.permissions.available', compact('module', 'permissions'));
     }
 
