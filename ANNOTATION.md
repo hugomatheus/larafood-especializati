@@ -56,6 +56,9 @@ php artisan make:migration create_module_permission_table (Criar migration)
 php artisan make:seeder UsersSeeder (Criar seeder para popular registro no banco)
 php artisan db:seed (rodar as seeds)
 
+php artisan migrate:refresh (roolback e up das migrations)
+php artisan migrate:fresh (dropa as tabelas e roda as migrations)
+
 Algumas informações sobre o orm do laravel
 
 Plan::all(); (retorna todos os planos)
