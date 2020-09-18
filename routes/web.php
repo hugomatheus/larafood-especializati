@@ -1,7 +1,7 @@
 <?php
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
     // Routes Module x Plan
 
@@ -47,6 +47,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::any('plans/search', 'PlanController@search')->name('plans.search');
     Route::resource('plans', 'PlanController');
 
+    // Route Admin
+    Route::get('/', 'PlanController@index');
+
 
 });
 
@@ -56,3 +59,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route Auth
+
+Auth::routes();
+
+
+// Auth::routes([
+//     'register' => false, // Desabilita o registro
+//     'reset' => false, // Desabilita o reset da senha
+//     'verify' => false, // Desabilita a verificação de e-mail
+//   ]);

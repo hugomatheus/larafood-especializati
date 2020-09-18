@@ -51,7 +51,10 @@ php artisan route:clear
 php artisan config:clear
 php artisan view:clear
 
-php artisan make:migration create_module_permission_table 
+php artisan make:migration create_module_permission_table (Criar migration)
+
+php artisan make:seeder UsersSeeder (Criar seeder para popular registro no banco)
+php artisan db:seed (rodar as seeds)
 
 Algumas informações sobre o orm do laravel
 
