@@ -16,6 +16,18 @@ class ModulePermissionController extends Controller
         $this->permission = $permission;
     }
 
+    public function modules($permissionId)
+    {
+        $permission = $this->permission->find($permissionId);
+        if(!$permission)
+        {
+            return redirect()->back();
+        }
+
+        $modules = $permission->modules()->paginate();
+        return view('admin.pages.permissions.modules.modules', compact('permission', 'modules'));
+    }
+
     public function permissions($moduleId)
     {
         $module = $this->module->find($moduleId);

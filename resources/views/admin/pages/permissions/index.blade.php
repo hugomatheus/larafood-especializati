@@ -44,9 +44,9 @@
                             <td>{{$permission->id}}</td>
                             <td>{{$permission->name}}</td>
                             <td class="project-actions text-right">
-                                {{-- <a class="btn btn-primary btn-sm" href="{{route('admin.acl.permissions.permissions.create', $permission->id)}}" data-toggle="tooltip" title="modulos!">
-                                    <i class="fas fa-clipboard-list "></i>
-                                </a> --}}
+                                <a class="btn btn-secondary btn-sm" href="{{route('permissions.modules', $permission->id)}}" data-toggle="tooltip" title="Módulos associadas com a permissão">
+                                    <i class="fas fa-clipboard-list"></i>
+                                </a>
                                 <a class="btn btn-primary btn-sm" href="{{route('permissions.show', $permission->id)}}" data-toggle="tooltip" title="Visualizar">
                                     <i class="far fa-file-alt"></i>
                                 </a>
