@@ -16,10 +16,10 @@
               <a href="{{route('modules.index')}}" class="btn btn-success">Módulos</a>
                 <h3 class="card-title"></h3>
                 <div class="card-tools">
-                    <form action="{{route('modules.search', $module->id)}}" method="POST">
+                    <form action="{{route('modules.permissions.available', $module->id)}}" method="POST">
                         @csrf
                         <div class="input-group input-group-sm">
-                            <input type="text" name="filter" class="form-control float-right">
+                        <input type="text" name="filter" class="form-control float-right" value="{{$filters['filter'] ?? ''}}">
                             <div class="input-group-append">
                               <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                             </div>

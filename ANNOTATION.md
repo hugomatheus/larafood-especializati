@@ -65,6 +65,16 @@ Plan::find($id)
 
 Plan::where('id', $id)->first();
 
+existe um método chamado "WHEN" que testa a variável e aplica o procedimento caso for true:
+
+$permissions = Permission::whereNotIn('permissions.id', function($query){
+                                $query->select('permission_profile.permission_id');
+                                $query->from('permission_profile');
+                                $query->whereRaw("profile_id={$this->id}");
+                            })->when($filter, function($query) use($filter){
+                                $query->where('permissions.name','like',"%{$filter}%");
+                            })->paginate();
+
 
 
 

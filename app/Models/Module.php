@@ -29,14 +29,19 @@ class Module extends Model
         return $results;
     }
 
-    public function permissionsAvailable()
+    public function permissionsAvailable($filter = null)
     {
         $permissions = Permission::whereNotIn('id', function($query) {
                                 $query->select('ModulePermission.permission_id');
                                 $query->from('module_permission AS ModulePermission');
                                 $query->where('ModulePermission.module_id', $this->id);
-                        })->paginate();
-
+                        })
+                        ->where(function($queryFilter) use ($filter) {
+                            if($filter){
+                                $queryFilter->where('name', 'LIKE', "%$filter%");
+                            }
+                        })
+                        ->paginate();
         return $permissions;
     }
 }

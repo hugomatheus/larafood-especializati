@@ -13,21 +13,9 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-              {{-- <a href="{{route('admin.acl.modules.permissions.create', $module->id)}}" data-toggle="tooltip" title="Lista com todas as permissões associadas ou não associadas" class="btn btn-success">Sincronizar Permissões</a> --}}
-              <a href="{{route('modules.permissions.available', $module->id)}}" data-toggle="tooltip" title="Vincular as permissões que ainda não foram associadas" class="btn btn-success">Vincular permissões</a>
+              <a href="{{route('modules.permissions.available', $module->id)}}" data-toggle="tooltip" title="Vincular as permissões que ainda não foram associadas" class="btn btn-success">Vincular novas permissões</a>
                 <h3 class="card-title"></h3>
-                <div class="card-tools">
-                    {{-- <form action="{{route('admin.acl.modules.permissions.search', $module->id)}}" method="POST">
-                        @csrf
-                        <div class="input-group input-group-sm">
-                            <input type="text" name="filter" class="form-control float-right">
-                            <div class="input-group-append">
-                              <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form> --}}
-
-                </div>
+                <div class="card-tools"></div>
               </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-hover text-nowrap">

@@ -30,17 +30,19 @@ class ModulePermissionController extends Controller
 
     }
 
-    public function permissionsAvailable($moduleId)
+    public function permissionsAvailable(Request $request, $moduleId)
     {
         $module = $this->module->find($moduleId);
 
         if(!$module)
         {
-            return redirect()->back();
+           return redirect()->back();
         }
 
-        $permissions = $module->permissionsAvailable();
-        return view('admin.pages.modules.permissions.available', compact('module', 'permissions'));
+        $filters = $request->except('_token');
+
+        $permissions = $module->permissionsAvailable($request->filter);
+        return view('admin.pages.modules.permissions.available', compact('module', 'permissions', 'filters'));
     }
 
     public function attachModulePermission(Request $request, $moduleId)

@@ -5,7 +5,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     // Routes Module x Permission
 
-    Route::get('modules/{id}/permissions/create', 'ACL\ModulePermissionController@permissionsAvailable')->name('modules.permissions.available');
+    Route::any('modules/{id}/permissions/create', 'ACL\ModulePermissionController@permissionsAvailable')->name('modules.permissions.available');
     Route::post('modules/{id}/permissions/store', 'ACL\ModulePermissionController@attachModulePermission')->name('modules.permissions.attach');
     Route::get('modules/{id}/permissions', 'ACL\ModulePermissionController@permissions')->name('modules.permissions');
 
