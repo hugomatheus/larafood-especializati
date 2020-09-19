@@ -13,4 +13,17 @@ class SiteController extends Controller
         $plans = Plan::with(['details'])->orderBy('price', 'ASC')->get();
         return view('site.home.index', compact('plans'));
     }
+
+    public function choicePlanSubscription($url)
+    {
+        $plan = Plan::where('url', $url)->first();
+
+        if(!$plan)
+        {
+            return redirect()->back();
+        }
+
+        session()->put('plan', $plan);
+        return redirect()->route('register');
+    }
 }
