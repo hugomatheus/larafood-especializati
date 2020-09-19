@@ -243,6 +243,7 @@ return [
             'url'  => 'admin/modules',
             'icon' => 'fas fa-clipboard-list',
         ],
+        //
         // [
         //     'text' => 'Roles',
         //     'url'  => 'admin/acl/roles',
