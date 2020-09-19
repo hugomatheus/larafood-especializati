@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'tenant_id'
     ];
 
     /**
@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     // Relationships:
 
-    public function tenent()
+    public function tenant()
     {
         return $this->belongsTo(Tenant::class);
     }
@@ -47,18 +47,32 @@ class User extends Authenticatable
     //--- Relationships:
 
 
-    
+
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%$filter%")
                         ->orWhere('email', 'LIKE', "%$filter%")
-                        ->orWhere(function($query) use ($filter){
-                            if($filter['tenant']){
-                                $tenantName =$filter['tenant'];
-                                $query->orWhere('tenant.name', 'LIKE', "%$tenantName%");
-                            }
-                        })
                         ->paginate();
+        return $results;
+    }
+
+    public function search2($filters = null)
+    {
+        $results = $this->join('tenants', 'tenants.id', 'users.tenant_id')
+                        ->where(function($query) use ($filters) {
+                               if($filters->filter_name) {
+                                  $query->orWhere('users.name', 'LIKE', "%{$filters->filter_name}%");
+                               }
+                               if($filters->filter_email) {
+                                  $query->orWhere('users.email', 'LIKE', "%{$filters->filter_email}%");
+                               }
+                               if($filters->filter_tenant) {
+                                  $query->where('tenants.name',"{$filters->filter_tenant}");
+                               }
+                        })
+                        ->select('users.*')
+                        ->with(['tenant'])
+                        ->paginate(1);
         return $results;
     }
 }

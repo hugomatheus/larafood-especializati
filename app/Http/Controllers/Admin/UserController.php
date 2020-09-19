@@ -49,7 +49,7 @@ class UserController extends Controller
     {
         $data = $request->all();
         $data['tenant_id'] = auth()->user()->tenant_id;
-
+        //dd($data);
         $this->user->create($data);
         return redirect()->route('users.index')->with('success', 'Registro cadastrado com sucesso!');
     }
@@ -127,6 +127,7 @@ class UserController extends Controller
     {
         $filters = $request->except('_token');
         $users = $this->user->search($request->filter);
+        //$users = $this->user->search2($request);
         return view('admin.pages.users.index', compact('users','filters'));
     }
 }
