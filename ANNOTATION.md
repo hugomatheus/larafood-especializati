@@ -1,8 +1,14 @@
 # Anotações
 
-Criar virtualhost - https://github.com/RoverWire/virtualhost
+
+
+## Criar virtualhost:
+https://github.com/RoverWire/virtualhost
+Para acessar depois de criado 
 http://larafood.especializati.local/
 
+
+## Configurações do projeto:
 
 Permission denied ".../storage/logs/laravel.log could not be opened"
 sudo chown -R $USER:www-data storage
@@ -13,16 +19,16 @@ sudo service apache2 restart
 
 obs: não funcionou com 775 somente com 777
 
-Criar Pasta Models 
+## Criar Pasta Models 
 Adicionar model User.php na pasta
 alterar o namespace em User.php e em config/auth onde chama User.php
 
 
-Usando AdminLTE no projeto 
+## Usando AdminLTE no projeto 
 https://github.com/jeroennoten/Laravel-AdminLTE
 
 
-Banco de dados
+## Banco de dados
 Ao criar o bd utilizar o charset: utf8mb4_unicode_ci
 pois é o charset utilizado pelo laravel, para confirmar tem informando em config > database.php nas configurações do mysql
 
@@ -34,7 +40,7 @@ php artisan migrate
 
 
 
-Alguns comandos do artisan:
+## Alguns comandos do artisan:
 
 php artisan make:model Models/Plan -m (Criando model Plan e sua migration)
 
@@ -87,12 +93,12 @@ $permissions = Permission::whereNotIn('permissions.id', function($query){
 
 
 
-algumas informações sobre blade 
+## Algumas informações sobre blade 
 
 $plans->links()  (Mostra a paginação)
 
 
-Rotas 
+## Rotas 
 php artisan route:list
 
 Route::resource('plans', 'PlanController');
