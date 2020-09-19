@@ -1,3 +1,5 @@
+# Anotações
+
 Criar virtualhost - https://github.com/RoverWire/virtualhost
 http://larafood.especializati.local/
 
