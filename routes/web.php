@@ -47,24 +47,31 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::any('plans/search', 'PlanController@search')->name('plans.search');
     Route::resource('plans', 'PlanController');
 
-    // Route Admin
+    // Route Admin (/admin)
     Route::get('/', 'PlanController@index');
 
 
 });
 
 
-// Route Site Home
+// Route Site
 
-Route::get('/', 'Site\SiteController@index')->name('site.home');
+Route::group(['namespace' => 'Site'], function () {
+    Route::get('/', 'SiteController@index')->name('site.home');
+    Route::get('/plan/{url}', 'SiteController@choicePlanSubscription')->name('plan.subscription');
+});
+
+
+
+// Route Auth
+
+Auth::routes();
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-// Route Auth
 
-Auth::routes();
 
 
 // Auth::routes([
