@@ -25,7 +25,7 @@
           </div>
           <div class="form-group">
             <label for="email">Senha</label>
-            <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" value="{{$user->password ?? old('password')}}" >
+            <input type="password" id="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" value="{{old('password')}}" >
              @if ($errors->has('password'))
                 <div class="invalid-feedback">
                     {{ $errors->first('password') }}
