@@ -232,6 +232,12 @@ return [
 
     'menu' => [
 
+        [
+            'text' => 'Usuários',
+            'url'  => 'admin/users',
+            'icon' => 'fa fa-users',
+        ],
+
         ['header' => 'Administrador'],
         [
             'text' => 'Planos',

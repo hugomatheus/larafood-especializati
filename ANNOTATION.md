@@ -90,6 +90,22 @@ $permissions = Permission::whereNotIn('permissions.id', function($query){
                             })->paginate();
 
 
+public function search($filter = null)
+{
+    $users = $this->join('tenants', 'tenants.id', '=', 'users.tenant_id')
+        ->where(function ($query) use ($filter) {
+            if ($filter) {
+                $query->where('users.name', 'LIKE', "%{$filter}%");
+                $query->orWhere('tenants.name', 'LIKE', "%{$filter}%")
+            }
+        })
+        ->select('users.*')
+        ->with('tenants')
+        ->get();
+
+    return $users;
+}
+
 
 
 

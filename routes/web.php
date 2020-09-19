@@ -3,6 +3,11 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Users
+
+    Route::any('users/search', 'UserController@search')->name('users.search');
+    Route::resource('users', 'UserController');
+
     // Routes Module x Plan
 
     Route::get('modules/{id}/plans', 'ACL\ModulePlanController@plans')->name('modules.plans');

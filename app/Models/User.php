@@ -43,4 +43,22 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Tenant::class);
     }
+
+    //--- Relationships:
+
+
+    
+    public function search($filter = null)
+    {
+        $results = $this->where('name', 'LIKE', "%$filter%")
+                        ->orWhere('email', 'LIKE', "%$filter%")
+                        ->orWhere(function($query) use ($filter){
+                            if($filter['tenant']){
+                                $tenantName =$filter['tenant'];
+                                $query->orWhere('tenant.name', 'LIKE', "%$tenantName%");
+                            }
+                        })
+                        ->paginate();
+        return $results;
+    }
 }
