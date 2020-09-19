@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->user->paginate();
+        $users = $this->user->TenantIdScope()->paginate();
         return view('admin.pages.users.index', compact('users'));
     }
 
@@ -63,7 +63,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = $this->user->find($id);
+        $user = $this->user->TenantIdScope()->find($id);
         if(!$user)
         {
             return redirect()->back();
@@ -79,7 +79,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->user->find($id);
+        $user = $this->user->TenantIdScope()->find($id);
         if(!$user)
         {
             return redirect()->back();
@@ -96,7 +96,7 @@ class UserController extends Controller
      */
     public function update(StoreUpdateUserRequest $request, $id)
     {
-        $user = $this->user->find($id);
+        $user = $this->user->TenantIdScope()->find($id);
         if(!$user)
         {
             return redirect()->back();
@@ -120,7 +120,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = $this->user->find($id);
+        $user = $this->user->TenantIdScope()->find($id);
         if(!$user)
         {
             return redirect()->back();

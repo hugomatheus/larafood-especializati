@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -46,12 +47,24 @@ class User extends Authenticatable
 
     //--- Relationships:
 
+    /**
+     * Scope a query to only include popular users.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeTenantIdScope($query)
+    {
+        return $query->where('tenant_id', auth()->user()->tenant_id);
+    }
+
 
 
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%$filter%")
                         ->orWhere('email', 'LIKE', "%$filter%")
+                        ->TenantIdScope()
                         ->paginate();
         return $results;
     }
@@ -72,7 +85,8 @@ class User extends Authenticatable
                         })
                         ->select('users.*')
                         ->with(['tenant'])
-                        ->paginate(1);
+                        ->TenantIdScope()
+                        ->paginate();
         return $results;
     }
 }
