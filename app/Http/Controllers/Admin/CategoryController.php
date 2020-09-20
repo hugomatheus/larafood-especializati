@@ -56,7 +56,15 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = $this->category->find($id);
+
+        if(!$category)
+        {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.categories.show', compact('category'));
+
     }
 
     /**
@@ -67,7 +75,14 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = $this->category->find($id);
+
+        if(!$category)
+        {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.categories.edit', compact('category'));
     }
 
     /**
@@ -79,7 +94,15 @@ class CategoryController extends Controller
      */
     public function update(StoreUpdateCategoryRequest $request, $id)
     {
-        //
+        $category = $this->category->find($id);
+
+        if(!$category)
+        {
+            return redirect()->back();
+        }
+
+        $category->update($request->all());
+        return redirect()->route('categories.index')->with('success', 'Registro alterado com sucesso!');
     }
 
     /**
@@ -90,6 +113,21 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = $this->category->find($id);
+
+        if(!$category)
+        {
+            return redirect()->back();
+        }
+        $category->delete();
+        return redirect()->route('categories.index')->with('success', 'Registro deletado com sucesso!');
+    }
+
+    public function search(Request $request)
+    {
+        $filters = $request->except('_token');
+        $categories = $this->category->search($request->filter);
+
+        return view('admin.pages.categories.index', compact('categories','filters'));
     }
 }
