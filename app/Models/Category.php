@@ -11,6 +11,15 @@ class Category extends Model
 
     protected $fillable = ['name', 'url', 'description'];
 
+    // Relationships:
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
+
+    //--- Relationships:
+ 
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%$filter%")
