@@ -1,7 +1,7 @@
   @csrf
   <div class="card card-secondary">
       <div class="card-header">
-        <h3 class="card-title">DADOS DA CATEOGORIA</h3>
+        <h3 class="card-title">DADOS DA CATEGORIA</h3>
       </div>
         <div class="card-body">
           @include('admin.includes._alerts')
