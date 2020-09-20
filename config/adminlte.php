@@ -237,6 +237,11 @@ return [
             'url'  => 'admin/users',
             'icon' => 'fa fa-users',
         ],
+        [
+            'text' => 'Categorias',
+            'url'  => 'admin/categories',
+            'icon' => 'fa fa-layer-group',
+        ],
 
         ['header' => 'Administrador'],
         [
