@@ -15,7 +15,7 @@ class PlanObserver
      */
     public function creating(Plan $plan)
     {
-        $plan->url = Str::kebab($plan->name);
+        $plan->url = Str::slug($plan->name);
     }
 
     /**
@@ -37,7 +37,7 @@ class PlanObserver
      */
     public function updating(Plan $plan)
     {
-        $plan->url = Str::kebab($plan->name);
+        $plan->url = Str::slug($plan->name);
     }
     /**
      * Handle the plan "updated" event.
