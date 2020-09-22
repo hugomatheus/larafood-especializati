@@ -18,8 +18,13 @@ class Category extends Model
         return $this->belongsTo(Tenant::class);
     }
 
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
+    }
+
     //--- Relationships:
- 
+
     public function search($filter = null)
     {
         $results = $this->where('name', 'LIKE', "%$filter%")
