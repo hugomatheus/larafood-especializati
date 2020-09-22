@@ -16,4 +16,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    // -- Relationships:
+
+    public function search($filter = null)
+    {
+        $results = $this->where('title', 'LIKE', "$filter")
+                        ->orWhere('description', 'LIKE', "$filter")
+                        ->paginate();
+        return $results;
+    }
 }
