@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUpdateProductRequest;
 use App\Models\Product;
 use App\Tenant\ManagerTenant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -114,6 +115,11 @@ class ProductController extends Controller
         $data = $request->all();
         if($request->hasFile('image') && $request->image->isValid())
         {
+            if(Storage::exists($product->image))
+            {
+                Storage::delete($product->image);
+            }
+
             $managerTenant = app(ManagerTenant::class);
             $tenant = $managerTenant->getTenant();
 
@@ -139,6 +145,12 @@ class ProductController extends Controller
         {
             return redirect()->back();
         }
+
+        if(Storage::exists($product->image))
+        {
+            Storage::delete($product->image);
+        }
+        
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Registro deletado com sucesso!');
     }
