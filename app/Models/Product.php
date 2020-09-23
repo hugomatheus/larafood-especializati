@@ -26,4 +26,21 @@ class Product extends Model
                         ->paginate();
         return $results;
     }
+
+    public function categoriesAvailable($filter = null)
+    {
+        $results = Category::whereNotIn('id', function($query) {
+                                  $query->select('category_product.category_id');
+                                  $query->from('category_product');
+                                  $query->where('product_id', $this->id);
+                                })
+                                ->where(function($queryFilter) use ($filter){
+                                    if($filter)
+                                    {
+                                        $queryFilter->where('name', 'LIKE', "%$filter%");
+                                    }
+                                })
+                                ->paginate();
+        return $results;
+    }
 }

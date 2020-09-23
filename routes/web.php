@@ -3,6 +3,19 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Category x Product
+
+    Route::get('categories/{id}/products', 'CategoryProductController@products')->name('categories.products');
+
+
+    // Routes Product x Category
+
+    Route::any('products/{id}/categories/create', 'CategoryProductController@categoriesAvailable')->name('products.categories.available');
+    Route::post('products/{id}/categories/store', 'CategoryProductController@attachProductCategory')->name('products.categories.attach');
+    Route::get('products/{id}/categories/{planId}/detach', 'CategoryProductController@detachProductCategory')->name('products.categories.detach');
+    Route::get('products/{id}/categories', 'CategoryProductController@categories')->name('products.categories');
+
+
     // Routes Products
 
     Route::any('products/search', 'ProductController@search')->name('products.search');

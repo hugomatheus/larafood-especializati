@@ -45,6 +45,9 @@
                             <td>{{$product->title}}</td>
                             <td class="project-actions text-right">
 
+                                <a class="btn btn-secondary btn-sm" href="{{route('products.categories', $product->id)}}" data-toggle="tooltip" title="Vincular categorias">
+                                    <i class="fa fa-layer-group"></i>
+                                </a>
                                 <a class="btn btn-primary btn-sm" href="{{route('products.show', $product->id)}}" data-toggle="tooltip" title="Visualizar">
                                     <i class="far fa-file-alt"></i>
                                 </a>
