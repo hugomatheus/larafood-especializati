@@ -232,6 +232,28 @@ return [
 
     'menu' => [
 
+        [
+            'text' => 'Usuários',
+            'url'  => 'admin/users',
+            'icon' => 'fa fa-users',
+        ],
+        [
+            'text' => 'Produtos',
+            'url'  => 'admin/products',
+            'icon' => 'fas fa-utensils',
+        ],
+        [
+            'text' => 'Categorias',
+            'url'  => 'admin/categories',
+            'icon' => 'fa fa-layer-group',
+        ],
+        [
+            'text' => 'Mesas',
+            'url'  => 'admin/tables',
+            'icon' => 'fas fa-diagnoses',
+        ],
+
+
         ['header' => 'Administrador'],
         [
             'text' => 'Planos',
@@ -312,16 +334,16 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],

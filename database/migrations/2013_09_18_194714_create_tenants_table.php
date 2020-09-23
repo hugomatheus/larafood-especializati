@@ -16,6 +16,7 @@ class CreateTenantsTable extends Migration
         Schema::create('tenants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('plan_id');
+            $table->uuid('uuid');
             $table->string('cnpj')->unique();
             $table->string('name')->unique();
             $table->string('url')->unique();
@@ -30,7 +31,7 @@ class CreateTenantsTable extends Migration
             $table->date('expires_at')->nullable(); // Data que expira o acesso
             $table->string('subscription_id', 255)->nullable(); // Identificado do Gateway de pagamento
             $table->boolean('subscription_active')->default(false); // Assinatura ativa (porque pode cancelar)
-            $table->boolean('subscription_suspended')->default(false); // Assinatura cancelada - fez a solicitação de cancelamento 
+            $table->boolean('subscription_suspended')->default(false); // Assinatura cancelada - fez a solicitação de cancelamento
 
             $table->timestamps();
 

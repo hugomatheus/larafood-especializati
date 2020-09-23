@@ -3,6 +3,39 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Table
+
+    Route::any('tables/search', 'TableController@search')->name('tables.search');
+    Route::resource('tables', 'TableController');
+
+    // Routes Category x Product
+
+    Route::get('categories/{id}/products', 'CategoryProductController@products')->name('categories.products');
+
+
+    // Routes Product x Category
+
+    Route::any('products/{id}/categories/create', 'CategoryProductController@categoriesAvailable')->name('products.categories.available');
+    Route::post('products/{id}/categories/store', 'CategoryProductController@attachProductCategory')->name('products.categories.attach');
+    Route::get('products/{id}/categories/{planId}/detach', 'CategoryProductController@detachProductCategory')->name('products.categories.detach');
+    Route::get('products/{id}/categories', 'CategoryProductController@categories')->name('products.categories');
+
+
+    // Routes Products
+
+    Route::any('products/search', 'ProductController@search')->name('products.search');
+    Route::resource('products', 'ProductController');
+
+    // Routes Categories
+
+    Route::any('categories/search', 'CategoryController@search')->name('categories.search');
+    Route::resource('categories', 'CategoryController');
+
+    // Routes Users
+
+    Route::any('users/search', 'UserController@search')->name('users.search');
+    Route::resource('users', 'UserController');
+
     // Routes Module x Plan
 
     Route::get('modules/{id}/plans', 'ACL\ModulePlanController@plans')->name('modules.plans');

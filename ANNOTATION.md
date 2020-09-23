@@ -67,6 +67,8 @@ php artisan db:seed (rodar as seeds)
 php artisan migrate:refresh (roolback e up das migrations)
 php artisan migrate:fresh (dropa as tabelas e roda as migrations)
 
+php artisan storage:link (Cria um link simbolico para ter acesso aos arquivos de uploadsll)
+
 Algumas informações sobre o orm do laravel
 
 Plan::all(); (retorna todos os planos)
@@ -89,6 +91,22 @@ $permissions = Permission::whereNotIn('permissions.id', function($query){
                                 $query->where('permissions.name','like',"%{$filter}%");
                             })->paginate();
 
+
+public function search($filter = null)
+{
+    $users = $this->join('tenants', 'tenants.id', '=', 'users.tenant_id')
+        ->where(function ($query) use ($filter) {
+            if ($filter) {
+                $query->where('users.name', 'LIKE', "%{$filter}%");
+                $query->orWhere('tenants.name', 'LIKE', "%{$filter}%")
+            }
+        })
+        ->select('users.*')
+        ->with('tenants')
+        ->get();
+
+    return $users;
+}
 
 
 
