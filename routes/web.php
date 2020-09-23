@@ -81,7 +81,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('plans', 'PlanController');
 
     // Route Admin (/admin)
-    Route::get('/', 'PlanController@index');
+    Route::get('/', 'UserController@index');
+
+    // Route Tests
+    Route::get('test-acl', function(){
+        $result = auth()->user()->getUserPermissions();
+        dd($result);
+    });
 
 
 });
