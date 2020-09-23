@@ -67,6 +67,8 @@ php artisan db:seed (rodar as seeds)
 php artisan migrate:refresh (roolback e up das migrations)
 php artisan migrate:fresh (dropa as tabelas e roda as migrations)
 
+php artisan storage:link (Cria um link simbolico para ter acesso aos arquivos de uploadsll)
+
 Algumas informações sobre o orm do laravel
 
 Plan::all(); (retorna todos os planos)

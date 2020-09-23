@@ -26,14 +26,16 @@ class StoreUpdateProductRequest extends FormRequest
         $id = $this->segment(3);
         $rules = [
             'title' => 'required|min:3|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1200,height=300|max:2048',
-            'price' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'description' => 'nullable|min:3|max:10000',
         ];
 
         if($this->method() == 'PUT')
         {
-            $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|dimensions:width=1200,height=300|max:2048';
+            $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
         }
+
+        return $rules;
     }
 }
