@@ -238,14 +238,19 @@ return [
             'icon' => 'fa fa-users',
         ],
         [
+            'text' => 'Produtos',
+            'url'  => 'admin/products',
+            'icon' => 'fas fa-utensils',
+        ],
+        [
             'text' => 'Categorias',
             'url'  => 'admin/categories',
             'icon' => 'fa fa-layer-group',
         ],
         [
-            'text' => 'Produtos',
-            'url'  => 'admin/products',
-            'icon' => 'fas fa-utensils',
+            'text' => 'Mesas',
+            'url'  => 'admin/tables',
+            'icon' => 'fas fa-diagnoses',
         ],
 
 

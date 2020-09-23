@@ -3,6 +3,11 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Table
+
+    Route::any('tables/search', 'TableController@search')->name('tables.search');
+    Route::resource('tables', 'TableController');
+
     // Routes Category x Product
 
     Route::get('categories/{id}/products', 'CategoryProductController@products')->name('categories.products');
