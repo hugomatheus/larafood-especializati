@@ -85,7 +85,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     // Route Tests
     Route::get('test-acl', function(){
-        $result = auth()->user()->getUserPermissions();
+        $result = auth()->user()->isAdmin();
         dd($result);
     });
 
