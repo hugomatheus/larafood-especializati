@@ -17,6 +17,7 @@ class DetailPlanController extends Controller
     {
         $this->detailPlan = $detailPlan;
         $this->plan = $plan;
+        $this->middleware(['can:admin']);
     }
 
 
