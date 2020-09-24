@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Permission;
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -24,7 +26,45 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        $this->defineGates();
+    }
 
-        //
+    public function defineGates()
+    {
+
+       $this->defineAdminGate();
+       $this->definePermissionsGates();
+
+        // Exemplo de Gate que verifica se o usuario é dono
+        Gate::define('owner', function(User $user, $object) {
+                return $user->id === $object->user_id;
+        });
+
+        // Usar no controller
+        //Gate::denies('owner', $product);
+
+    }
+
+    public function defineAdminGate()
+    {
+        Gate::before(function($user){
+            if($user->isAdmin()){
+                return true;
+            }
+        });
+    }
+
+    public function definePermissionsGates()
+    {
+        $permissions = Permission::all();
+
+        foreach($permissions as $permission)
+        {
+            Gate::define($permission->name, function(User $user) use ($permission)
+            {
+                 return $user->hasPermission($permission->name);
+            });
+
+        }
     }
 }

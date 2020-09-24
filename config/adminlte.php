@@ -236,34 +236,40 @@ return [
             'text' => 'Usuários',
             'url'  => 'admin/users',
             'icon' => 'fa fa-users',
+            'can' => 'index_user',
         ],
         [
             'text' => 'Produtos',
             'url'  => 'admin/products',
             'icon' => 'fas fa-utensils',
+            'can' => 'index_product',
         ],
         [
             'text' => 'Categorias',
             'url'  => 'admin/categories',
             'icon' => 'fa fa-layer-group',
+            'can' => 'index_category',
         ],
         [
             'text' => 'Mesas',
             'url'  => 'admin/tables',
             'icon' => 'fas fa-diagnoses',
+            'can' => 'index_table',
         ],
 
 
-        ['header' => 'Administrador'],
+        ['header' => 'Administrador', 'can' => 'admin'],
         [
             'text' => 'Planos',
             'url'  => 'admin/plans',
             'icon' => 'far fa-list-alt',
+            'can' => 'admin'
         ],
         [
             'text' => 'Módulos',
             'url'  => 'admin/modules',
             'icon' => 'fas fa-clipboard-list',
+            'can' => 'admin'
         ],
         //
         // [
@@ -275,6 +281,7 @@ return [
             'text' => 'Permissão',
             'url'  => 'admin/permissions',
             'icon' => 'fas fa-fingerprint',
+            'can' => 'admin'
         ],
     ],
 
