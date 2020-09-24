@@ -152,6 +152,15 @@ public function index()
         return view('admin.pages.products.index', compact('products'));
     }
 
+
+## 5 - nas views (utilizando diretiva can)
+
+@can('add_categories')
+    <h1>Cadastrar nova categoria</h1>
+@endcan
+
+
+
 ## Algumas informações sobre blade 
 
 $plans->links()  (Mostra a paginação)

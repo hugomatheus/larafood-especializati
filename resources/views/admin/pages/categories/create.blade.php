@@ -5,6 +5,9 @@
 
 @section('content_header')
     <h1>Cadastrar nova categoria</h1>
+    @can('add_categories')
+        <h1>Cadastrar nova categoria</h1>
+    @endcan
 @stop
 
 @section('content')

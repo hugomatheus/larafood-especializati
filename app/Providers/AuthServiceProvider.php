@@ -31,18 +31,8 @@ class AuthServiceProvider extends ServiceProvider
 
     public function defineGates()
     {
-
        $this->defineAdminGate();
        $this->definePermissionsGates();
-
-        // Exemplo de Gate que verifica se o usuario é dono
-        Gate::define('owner', function(User $user, $object) {
-                return $user->id === $object->user_id;
-        });
-
-        // Usar no controller
-        //Gate::denies('owner', $product);
-
     }
 
     public function defineAdminGate()
@@ -66,5 +56,16 @@ class AuthServiceProvider extends ServiceProvider
             });
 
         }
+    }
+
+    public function defineExempleGate()
+    {
+        // Exemplo de Gate que verifica se o usuario é dono
+        Gate::define('owner', function(User $user, $object) {
+            return $user->id === $object->user_id;
+        });
+
+        // Usar no controller
+        //Gate::denies('owner', $product);
     }
 }
