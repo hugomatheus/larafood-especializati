@@ -236,25 +236,25 @@ return [
             'text' => 'Usuários',
             'url'  => 'admin/users',
             'icon' => 'fa fa-users',
-            'can' => 'index_user',
+            'can' => 'index_users',
         ],
         [
             'text' => 'Produtos',
             'url'  => 'admin/products',
             'icon' => 'fas fa-utensils',
-            'can' => 'index_product',
+            'can' => 'index_products',
         ],
         [
             'text' => 'Categorias',
             'url'  => 'admin/categories',
             'icon' => 'fa fa-layer-group',
-            'can' => 'index_category',
+            'can' => 'index_categories',
         ],
         [
             'text' => 'Mesas',
             'url'  => 'admin/tables',
             'icon' => 'fas fa-diagnoses',
-            'can' => 'index_table',
+            'can' => 'index_tables',
         ],
 
 
