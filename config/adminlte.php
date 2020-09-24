@@ -232,16 +232,44 @@ return [
 
     'menu' => [
 
-        ['header' => 'Administrador'],
+        [
+            'text' => 'Usuários',
+            'url'  => 'admin/users',
+            'icon' => 'fa fa-users',
+            'can' => 'index_users',
+        ],
+        [
+            'text' => 'Produtos',
+            'url'  => 'admin/products',
+            'icon' => 'fas fa-utensils',
+            'can' => 'index_products',
+        ],
+        [
+            'text' => 'Categorias',
+            'url'  => 'admin/categories',
+            'icon' => 'fa fa-layer-group',
+            'can' => 'index_categories',
+        ],
+        [
+            'text' => 'Mesas',
+            'url'  => 'admin/tables',
+            'icon' => 'fas fa-diagnoses',
+            'can' => 'index_tables',
+        ],
+
+
+        ['header' => 'Administrador', 'can' => 'admin'],
         [
             'text' => 'Planos',
             'url'  => 'admin/plans',
             'icon' => 'far fa-list-alt',
+            'can' => 'admin'
         ],
         [
             'text' => 'Módulos',
             'url'  => 'admin/modules',
             'icon' => 'fas fa-clipboard-list',
+            'can' => 'admin'
         ],
         //
         // [
@@ -253,6 +281,7 @@ return [
             'text' => 'Permissão',
             'url'  => 'admin/permissions',
             'icon' => 'fas fa-fingerprint',
+            'can' => 'admin'
         ],
     ],
 
@@ -312,16 +341,16 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js',
                 ],
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css',
                 ],
             ],

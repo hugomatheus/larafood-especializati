@@ -14,6 +14,7 @@ class ModulePlanController extends Controller
     {
         $this->plan = $plan;
         $this->module = $module;
+        $this->middleware(['can:admin']);
     }
 
     public function plans($moduleId)
