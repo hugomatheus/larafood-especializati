@@ -8,9 +8,9 @@
           <div class="form-group">
             <label for="title">Título</label>
             <input type="text" id="title" name="title" class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}"  value="{{$product->title ?? old('title')}}">
-             @if ($errors->has('name'))
+             @if ($errors->has('title'))
                 <div class="invalid-feedback">
-                    {{ $errors->first('name') }}
+                    {{ $errors->first('title') }}
                 </div>
              @endif
           </div>

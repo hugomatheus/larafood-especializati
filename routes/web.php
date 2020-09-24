@@ -3,6 +3,11 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Tenants
+
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+    Route::resource('tenants', 'TenantController');
+
     // Routes Table
 
     Route::any('tables/search', 'TableController@search')->name('tables.search');

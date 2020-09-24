@@ -260,6 +260,12 @@ return [
 
         ['header' => 'Administrador', 'can' => 'admin'],
         [
+            'text' => 'Empresa',
+            'url'  => 'admin/tenants',
+            'icon' => 'fas fa-industry',
+            'can' => 'admin'
+        ],
+        [
             'text' => 'Planos',
             'url'  => 'admin/plans',
             'icon' => 'far fa-list-alt',
