@@ -279,9 +279,9 @@ return [
         ],
 
         [
-            'text' => 'Roles',
+            'text' => 'Cargos',
             'url'  => 'admin/roles',
-            'icon' => 'fas fa-user-tie',
+            'icon' => 'fas fa-user-tag',
             'can' => 'admin',
         ],
         [

@@ -3,6 +3,13 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Role x User
+
+    Route::any('users/{id}/roles/create', 'ACL\RoleUserController@rolesAvailable')->name('users.roles.available');
+    Route::post('users/{id}/roles/store', 'ACL\RoleUserController@attachRoleUser')->name('users.roles.attach');
+    Route::get('users/{id}/roles/{roleId}/detach', 'ACL\RoleUserController@detachRoleUser')->name('users.roles.detach');
+    Route::get('users/{id}/roles', 'ACL\RoleUserController@roles')->name('users.roles');
+
     // Routes Role x Permission
 
     Route::any('roles/{id}/permissions/create', 'ACL\PermissionRoleController@permissionsAvailable')->name('roles.permissions.available');
