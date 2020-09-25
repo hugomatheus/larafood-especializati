@@ -277,12 +277,13 @@ return [
             'icon' => 'fas fa-clipboard-list',
             'can' => 'admin'
         ],
-        //
-        // [
-        //     'text' => 'Roles',
-        //     'url'  => 'admin/acl/roles',
-        //     'icon' => 'fas fa-user-tie',
-        // ],
+
+        [
+            'text' => 'Roles',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-user-tie',
+            'can' => 'admin',
+        ],
         [
             'text' => 'Permissão',
             'url'  => 'admin/permissions',

@@ -3,6 +3,18 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Role x Permission
+
+    Route::any('roles/{id}/permissions/create', 'CategoryProductController@categoriesAvailable')->name('roles.permissions.available');
+    Route::post('roles/{id}/permissions/store', 'CategoryProductController@attachProductCategory')->name('roles.permissions.attach');
+    Route::get('roles/{id}/permissions/{planId}/detach', 'CategoryProductController@detachProductCategory')->name('roles.permissions.detach');
+    Route::get('roles/{id}/permissions', 'CategoryProductController@permissions')->name('roles.permissions');
+
+    // Routes Roles
+
+    Route::any('roles/search', 'ACL\RoleController@search')->name('roles.search');
+    Route::resource('roles', 'ACL\RoleController');
+
     // Routes Tenants
 
     Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
