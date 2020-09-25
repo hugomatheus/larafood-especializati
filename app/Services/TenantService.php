@@ -9,16 +9,21 @@ class TenantService
 {
     private $plan;
     private $data = [];
-    private $repository;
+    private $tenantRepository;
 
-    public function __construct(ITenantRepository $repository)
+    public function __construct(ITenantRepository $tenantRepository)
     {
-        $this->repository = $repository;
+        $this->tenantRepository = $tenantRepository;
     }
 
     public function getAll()
     {
-        return $this->repository->getAll();
+        return $this->tenantRepository->getAll();
+    }
+
+    public function getByUuid(string $uuid)
+    {
+        return $this->tenantRepository->getByUuid($uuid);
     }
 
     public function make(Plan $plan, array $data)

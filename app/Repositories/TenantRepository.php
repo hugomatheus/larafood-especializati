@@ -18,4 +18,9 @@ class TenantRepository implements ITenantRepository {
     {
         return $this->tenant->all();
     }
+
+    public function getByUuid(string $uuid)
+    {
+        return $this->tenant->where('uuid', $uuid)->first();
+    }
 }
