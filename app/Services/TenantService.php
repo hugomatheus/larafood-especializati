@@ -3,12 +3,23 @@
 namespace App\Services;
 
 use App\Models\Plan;
-
+use App\Repositories\Contracts\ITenantRepository;
 
 class TenantService
 {
     private $plan;
     private $data = [];
+    private $repository;
+
+    public function __construct(ITenantRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function getAll()
+    {
+        return $this->repository->getAll();
+    }
 
     public function make(Plan $plan, array $data)
     {
