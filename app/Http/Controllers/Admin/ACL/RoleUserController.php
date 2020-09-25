@@ -14,7 +14,7 @@ class RoleUserController extends Controller
     {
         $this->user = $user;
         $this->role = $role;
-        $this->middleware(['can:admin']);
+        $this->middleware(['can:index_users']);
     }
 
     public function users($roleId)
@@ -78,12 +78,16 @@ class RoleUserController extends Controller
 
     public function detachRoleUser($userId, $roleId)
     {
-        $user = $this->user->find($userId);
+        $user = $this->user->with(['tenant'])->find($userId);
         $role = $this->role->find($roleId);
 
         if(!$user || !$role)
         {
             return redirect()->back();
+        }
+        if($user->email === $user->tenant->email && $role->id === Role::ROLE_ADMIN_TENANT)
+        {
+            return redirect()->back()->with('error', 'O Admin da empresa não pode ter seu cargo de Admin desvinculado');
         }
 
 

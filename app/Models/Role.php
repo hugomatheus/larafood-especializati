@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     protected $fillable = ['name', 'description'];
+    const ROLE_ADMIN_TENANT = 1;
 
     // Relationships:
 

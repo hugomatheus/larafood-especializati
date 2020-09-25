@@ -182,3 +182,29 @@ Rota resouce igual a :
 // Route::delete('plans/{id}', 'PlanController@destroy')->name('plans.destroy');
 
 
+## Events 
+
+Criar
+php artisan make:event NomeDoEvento
+
+
+
+
+### Observações Events e Listeners
+
+Ao criar um event ele deve ser associado com um ou mais listeners, onde esse responsavel por criar determinada ação e o event será responsavel por disparar esses listeners
+
+Exemplo event TenantCreatedEvent
+
+Listener 1: responsavel por associar o usuário para determinada role
+Listener 2: enviar email
+
+
+Para publicar o event criado deve ser inserido no EventServiceProvider para ligar com quais listeners o event vi ta ouvindo
+Depois deve chamar o event criado em algum controller por exemplo:
+
+event(TenantCreatedEvent)
+
+no curso o instrutor fala que é possivel chamar o event até msm em um observer
+
+
