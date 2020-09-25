@@ -14,11 +14,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PlansTableSeeder::class,
             TenantsTableSeeder::class,
-            UsersTableSeeder::class,
             ModulesTableSeeder::class,
             PermissionsTableSeeder::class,
+            RolesTableSeeder::class,
             ModulePlanTableSeeder::class,
-            ModulePermissionTableSeeder::class
+            ModulePermissionTableSeeder::class,
+            PermissionRoleTableSeeder::class,
+            UsersTableSeeder::class,
+
         ]);
     }
 }
