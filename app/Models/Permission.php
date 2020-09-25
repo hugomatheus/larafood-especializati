@@ -17,6 +17,13 @@ class Permission extends Model
         return $this->belongsToMany(Module::class);
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    // -- Relationships:
+
     public function search($filter) {
         $results = $this->where('name', 'LIKE', "%$filter%")
                         ->orWhere('description', 'LIKE', "%$filter%")

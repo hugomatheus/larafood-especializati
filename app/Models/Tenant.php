@@ -17,7 +17,8 @@ class Tenant extends Model
         'expires_at',
         'subscription_id',
         'subscription_active',
-        'subscription_suspended'
+        'subscription_suspended',
+        'plan_id',
     ];
 
     // Relationships:
@@ -31,4 +32,6 @@ class Tenant extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    // -- Relationships:
 }

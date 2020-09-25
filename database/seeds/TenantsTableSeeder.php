@@ -19,5 +19,12 @@ class TenantsTableSeeder extends Seeder
             'url' => 'larafood',
             'email' => 'admin@admin.com',
         ]);
+
+        $plan->tenants()->create([
+            'cnpj' => '00677219000121',
+            'name' => 'Lanche da moni',
+            'url' => 'lanche-da-moni',
+            'email' => 'hugo_targino@outlook.com',
+        ]);
     }
 }

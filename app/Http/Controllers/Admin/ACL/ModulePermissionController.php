@@ -14,6 +14,7 @@ class ModulePermissionController extends Controller
     {
         $this->module = $module;
         $this->permission = $permission;
+        $this->middleware(['can:admin']);
     }
 
     public function modules($permissionId)

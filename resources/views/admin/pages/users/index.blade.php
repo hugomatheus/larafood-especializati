@@ -56,6 +56,9 @@
                             <td>{{$user->email}}</td>
                             <td class="project-actions text-right">
 
+                                <a class="btn btn-secondary btn-sm" href="{{route('users.roles', $user->id)}}" data-toggle="tooltip" title="Associação de cargos">
+                                    <i class="fas fa-user-tag"></i>
+                                </a>
                                 <a class="btn btn-primary btn-sm" href="{{route('users.show', $user->id)}}" data-toggle="tooltip" title="Visualizar">
                                     <i class="far fa-file-alt"></i>
                                 </a>

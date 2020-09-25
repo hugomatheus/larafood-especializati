@@ -236,45 +236,59 @@ return [
             'text' => 'Usuários',
             'url'  => 'admin/users',
             'icon' => 'fa fa-users',
+            'can' => 'index_users',
         ],
         [
             'text' => 'Produtos',
             'url'  => 'admin/products',
             'icon' => 'fas fa-utensils',
+            'can' => 'index_products',
         ],
         [
             'text' => 'Categorias',
             'url'  => 'admin/categories',
             'icon' => 'fa fa-layer-group',
+            'can' => 'index_categories',
         ],
         [
             'text' => 'Mesas',
             'url'  => 'admin/tables',
             'icon' => 'fas fa-diagnoses',
+            'can' => 'index_tables',
         ],
 
 
-        ['header' => 'Administrador'],
+        ['header' => 'Administrador', 'can' => 'admin'],
+        [
+            'text' => 'Empresa',
+            'url'  => 'admin/tenants',
+            'icon' => 'fas fa-industry',
+            'can' => 'admin'
+        ],
         [
             'text' => 'Planos',
             'url'  => 'admin/plans',
             'icon' => 'far fa-list-alt',
+            'can' => 'admin'
         ],
         [
             'text' => 'Módulos',
             'url'  => 'admin/modules',
             'icon' => 'fas fa-clipboard-list',
+            'can' => 'admin'
         ],
-        //
-        // [
-        //     'text' => 'Roles',
-        //     'url'  => 'admin/acl/roles',
-        //     'icon' => 'fas fa-user-tie',
-        // ],
+
+        [
+            'text' => 'Cargos',
+            'url'  => 'admin/roles',
+            'icon' => 'fas fa-user-tag',
+            'can' => 'admin',
+        ],
         [
             'text' => 'Permissão',
             'url'  => 'admin/permissions',
             'icon' => 'fas fa-fingerprint',
+            'can' => 'admin'
         ],
     ],
 

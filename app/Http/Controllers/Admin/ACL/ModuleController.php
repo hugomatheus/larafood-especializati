@@ -14,6 +14,7 @@ class ModuleController extends Controller
     public function __construct(Module $module)
     {
         $this->module = $module;
+        $this->middleware(['can:admin']);
     }
 
     /**

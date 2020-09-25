@@ -108,6 +108,56 @@ public function search($filter = null)
     return $users;
 }
 
+## Autorização (Gates)
+
+Depois de realizado a lógica para criação dos gates de permissão 
+Existe as seguintes formas para se aplicar
+
+### 1 - middleware nas rotas 
+Exemplo:
+Route::resource('products', 'ProductController')->middleware(['can:index_products']);
+
+### 2 - middleware no construtor do controller
+Exemplo:
+public function __construct(Product $product)
+    {
+        $this->product = $product;
+        $this->middleware(['can:index_products']);
+    }
+
+### 3 - Nos métodos (Forma 1 - Utilizando facade Gate)
+
+public function index()
+    {
+        if(Gate::allows('index_products')){
+            $products = $this->product->paginate();
+            return view('admin.pages.products.index', compact('products'));
+        }
+    }
+Obs: Nessa forma tem a possibilidade de redirecinar para outra lugar já que utiliza o if
+
+if (Gate::denies('category-create')) {
+    abort(403, 'Não tem autorização para cadastrar uma nova categoria');
+}
+if (Gate::denais('nome-permissao')) {
+    return redirect('/url')->with('Erro', 'Mensagem');
+}
+
+### 4 - Nos métodos (Forma 2 - Utilizando authorize)    
+
+public function index()
+    {
+        $this->authorize('index_products');
+        $products = $this->product->paginate();
+        return view('admin.pages.products.index', compact('products'));
+    }
+
+
+## 5 - nas views (utilizando diretiva can)
+
+@can('add_categories')
+    <h1>Cadastrar nova categoria</h1>
+@endcan
 
 
 
@@ -130,5 +180,31 @@ Rota resouce igual a :
 // Route::get('plans/{id}/edit', 'PlanController@edit')->name('plans.edit');
 // Route::put('plans/{id}', 'PlanController@update')->name('plans.update');
 // Route::delete('plans/{id}', 'PlanController@destroy')->name('plans.destroy');
+
+
+## Events 
+
+Criar
+php artisan make:event NomeDoEvento
+
+
+
+
+### Observações Events e Listeners
+
+Ao criar um event ele deve ser associado com um ou mais listeners, onde esse responsavel por criar determinada ação e o event será responsavel por disparar esses listeners
+
+Exemplo event TenantCreatedEvent
+
+Listener 1: responsavel por associar o usuário para determinada role
+Listener 2: enviar email
+
+
+Para publicar o event criado deve ser inserido no EventServiceProvider para ligar com quais listeners o event vi ta ouvindo
+Depois deve chamar o event criado em algum controller por exemplo:
+
+event(TenantCreatedEvent)
+
+no curso o instrutor fala que é possivel chamar o event até msm em um observer
 
 

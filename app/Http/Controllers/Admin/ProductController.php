@@ -15,6 +15,7 @@ class ProductController extends Controller
     public function __construct(Product $product)
     {
         $this->product = $product;
+        $this->middleware(['can:index_products']);
     }
 
     /**
@@ -24,6 +25,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $this->authorize('index_products');
         $products = $this->product->paginate();
         return view('admin.pages.products.index', compact('products'));
     }
@@ -150,7 +152,7 @@ class ProductController extends Controller
         {
             Storage::delete($product->image);
         }
-        
+
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Registro deletado com sucesso!');
     }

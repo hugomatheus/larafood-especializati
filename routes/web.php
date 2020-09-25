@@ -3,6 +3,30 @@
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
+    // Routes Role x User
+
+    Route::any('users/{id}/roles/create', 'ACL\RoleUserController@rolesAvailable')->name('users.roles.available');
+    Route::post('users/{id}/roles/store', 'ACL\RoleUserController@attachRoleUser')->name('users.roles.attach');
+    Route::get('users/{id}/roles/{roleId}/detach', 'ACL\RoleUserController@detachRoleUser')->name('users.roles.detach');
+    Route::get('users/{id}/roles', 'ACL\RoleUserController@roles')->name('users.roles');
+
+    // Routes Role x Permission
+
+    Route::any('roles/{id}/permissions/create', 'ACL\PermissionRoleController@permissionsAvailable')->name('roles.permissions.available');
+    Route::post('roles/{id}/permissions/store', 'ACL\PermissionRoleController@attachPermissionRole')->name('roles.permissions.attach');
+    Route::get('roles/{id}/permissions/{permissionId}/detach', 'ACL\PermissionRoleController@detachPermissionRole')->name('roles.permissions.detach');
+    Route::get('roles/{id}/permissions', 'ACL\PermissionRoleController@permissions')->name('roles.permissions');
+
+    // Routes Roles
+
+    Route::any('roles/search', 'ACL\RoleController@search')->name('roles.search');
+    Route::resource('roles', 'ACL\RoleController');
+
+    // Routes Tenants
+
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+    Route::resource('tenants', 'TenantController');
+
     // Routes Table
 
     Route::any('tables/search', 'TableController@search')->name('tables.search');
@@ -17,7 +41,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     Route::any('products/{id}/categories/create', 'CategoryProductController@categoriesAvailable')->name('products.categories.available');
     Route::post('products/{id}/categories/store', 'CategoryProductController@attachProductCategory')->name('products.categories.attach');
-    Route::get('products/{id}/categories/{planId}/detach', 'CategoryProductController@detachProductCategory')->name('products.categories.detach');
+    Route::get('products/{id}/categories/{categoryId}/detach', 'CategoryProductController@detachProductCategory')->name('products.categories.detach');
     Route::get('products/{id}/categories', 'CategoryProductController@categories')->name('products.categories');
 
 
@@ -45,7 +69,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     Route::any('plans/{id}/modules/create', 'ACL\ModulePlanController@modulesAvailable')->name('plans.modules.available');
     Route::post('plans/{id}/modules/store', 'ACL\ModulePlanController@attachModulePlan')->name('plans.modules.attach');
-    Route::get('plans/{id}/modules/{planId}/detach', 'ACL\ModulePlanController@detachModulePlan')->name('plans.modules.detach');
+    Route::get('plans/{id}/modules/{moduleId}/detach', 'ACL\ModulePlanController@detachModulePlan')->name('plans.modules.detach');
     Route::get('plans/{id}/modules', 'ACL\ModulePlanController@modules')->name('plans.modules');
 
 
@@ -81,7 +105,13 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::resource('plans', 'PlanController');
 
     // Route Admin (/admin)
-    Route::get('/', 'PlanController@index');
+    Route::get('/', 'UserController@index');
+
+    // Route Tests
+    Route::get('test-acl', function(){
+        $result = auth()->user()->getUserPermissions();
+        dd($result);
+    });
 
 
 });

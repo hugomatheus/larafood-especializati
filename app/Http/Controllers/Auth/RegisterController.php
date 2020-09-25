@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Services\TenantService;
+use App\Tenant\Events\TenantCreatedEvent;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller
@@ -37,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware(['guest', 'checkPlanInSession']);
     }
 
     /**
@@ -75,6 +76,8 @@ class RegisterController extends Controller
         session()->forget('plan');
         $tenantService = app(TenantService::class);
         $user = $tenantService->make($plan, $data);
+
+        event(new TenantCreatedEvent($user));
 
         return $user;
     }
