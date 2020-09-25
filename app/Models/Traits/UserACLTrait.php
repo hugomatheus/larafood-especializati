@@ -10,8 +10,9 @@ trait UserACLTrait {
     public function getUserPermissions()
     {
         $getPlanPermissions = $this->getPlanPermissions();
+        $getRolePermissions = $this->getRolePermissions();
 
-        return $getPlanPermissions;
+        return array_unique(array_intersect($getPlanPermissions, $getRolePermissions));
     }
 
     public function getPlanPermissions(): array
@@ -29,7 +30,22 @@ trait UserACLTrait {
             }
         }
 
-        return array_unique($permissions);
+        return $permissions;
+    }
+
+    public function getRolePermissions()
+    {
+        $roles = $this->roles()->with(['permissions'])->get();
+        $permissions = [];
+
+        foreach($roles as $role)
+        {
+            foreach($role->permissions as $permission)
+            {
+                array_push($permissions, $permission->name);
+            }
+        }
+        return $permissions;
     }
 
     public function hasPermission(string $permission): bool
