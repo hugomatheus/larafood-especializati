@@ -24,4 +24,20 @@ class Role extends Model
                         ->paginate();
         return $results;
     }
+
+    public function permissionsAvailable($filter = null)
+    {
+        $permissions = Permission::whereNotIn('permissions.id', function($query) {
+                                    $query->select('permission_role.permission_id');
+                                    $query->from('permission_role');
+                                    $query->where('permission_role.role_id', $this->id);
+                                  })
+                                    ->where(function($queryFilter) use ($filter) {
+                                        if($filter){
+                                            $queryFilter->where('permissions.name', 'LIKE', "%$filter%");
+                                        }
+                                  })
+                                ->paginate();
+        return $permissions;
+    }
 }

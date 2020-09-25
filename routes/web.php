@@ -5,10 +5,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     // Routes Role x Permission
 
-    Route::any('roles/{id}/permissions/create', 'CategoryProductController@categoriesAvailable')->name('roles.permissions.available');
-    Route::post('roles/{id}/permissions/store', 'CategoryProductController@attachProductCategory')->name('roles.permissions.attach');
-    Route::get('roles/{id}/permissions/{planId}/detach', 'CategoryProductController@detachProductCategory')->name('roles.permissions.detach');
-    Route::get('roles/{id}/permissions', 'CategoryProductController@permissions')->name('roles.permissions');
+    Route::any('roles/{id}/permissions/create', 'ACL\PermissionRoleController@permissionsAvailable')->name('roles.permissions.available');
+    Route::post('roles/{id}/permissions/store', 'ACL\PermissionRoleController@attachPermissionRole')->name('roles.permissions.attach');
+    Route::get('roles/{id}/permissions/{permissionId}/detach', 'ACL\PermissionRoleController@detachPermissionRole')->name('roles.permissions.detach');
+    Route::get('roles/{id}/permissions', 'ACL\PermissionRoleController@permissions')->name('roles.permissions');
 
     // Routes Roles
 
@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     Route::any('products/{id}/categories/create', 'CategoryProductController@categoriesAvailable')->name('products.categories.available');
     Route::post('products/{id}/categories/store', 'CategoryProductController@attachProductCategory')->name('products.categories.attach');
-    Route::get('products/{id}/categories/{planId}/detach', 'CategoryProductController@detachProductCategory')->name('products.categories.detach');
+    Route::get('products/{id}/categories/{categoryId}/detach', 'CategoryProductController@detachProductCategory')->name('products.categories.detach');
     Route::get('products/{id}/categories', 'CategoryProductController@categories')->name('products.categories');
 
 
@@ -62,7 +62,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
     Route::any('plans/{id}/modules/create', 'ACL\ModulePlanController@modulesAvailable')->name('plans.modules.available');
     Route::post('plans/{id}/modules/store', 'ACL\ModulePlanController@attachModulePlan')->name('plans.modules.attach');
-    Route::get('plans/{id}/modules/{planId}/detach', 'ACL\ModulePlanController@detachModulePlan')->name('plans.modules.detach');
+    Route::get('plans/{id}/modules/{moduleId}/detach', 'ACL\ModulePlanController@detachModulePlan')->name('plans.modules.detach');
     Route::get('plans/{id}/modules', 'ACL\ModulePlanController@modules')->name('plans.modules');
 
 
