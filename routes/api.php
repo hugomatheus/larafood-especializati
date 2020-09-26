@@ -20,6 +20,9 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
 
     Route::get('/categories/{url}', 'CategoryApiController@show');
     Route::get('/categories', 'CategoryApiController@categoriesByTenant');
+
+    Route::get('/tables/{identify}', 'TableApiController@show');
+    Route::get('/tables', 'TableApiController@tablesByTenant');
 });
 
 
