@@ -18,6 +18,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
     Route::get('tenants', 'TenantApiController@index');
     Route::get('tenants/{uuid}', 'TenantApiController@show');
 
+    Route::get('/categories/{url}', 'CategoryApiController@show');
     Route::get('/categories', 'CategoryApiController@categoriesByTenant');
 });
 

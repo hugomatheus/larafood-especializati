@@ -30,5 +30,11 @@ class CategoryRepositoryQueryBuilder implements ICategoryRepository
         return $categories;
     }
 
+    public function getByUrl(string $url)
+    {
+        $category = DB::table($this->db_table)->where('url', $url)->first();
+        return $category;
+    }
+
 
 }

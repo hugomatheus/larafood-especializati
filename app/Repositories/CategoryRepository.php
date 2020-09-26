@@ -32,5 +32,11 @@ class CategoryRepository implements ICategoryRepository
         return $categories;
     }
 
+    public function getByUrl(string $url)
+    {
+        $category = $this->category->where('url', $url)->first();
+        return $category;
+    }
+
 
 }

@@ -26,4 +26,16 @@ class CategoryApiController extends Controller
         $categories = $this->categoryService->getAllByTenantUuid($request->token_company);
         return CategoryResource::collection($categories);
     }
+
+    public function show(TenantFormRequest $request, $url)
+    {
+        $category = $this->categoryService->getByUrl($url);
+
+        if(!$category)
+        {
+            return response()->json(['message' => 'Not Found'], 404);
+        }
+
+        return new CategoryResource($category);
+    }
 }
