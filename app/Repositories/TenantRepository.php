@@ -14,9 +14,9 @@ class TenantRepository implements ITenantRepository {
         $this->tenant = $tenant;
     }
 
-    public function getAll()
+    public function getAll(int $per_page)
     {
-        return $this->tenant->all();
+        return $this->tenant->paginate($per_page);
     }
 
     public function getByUuid(string $uuid)

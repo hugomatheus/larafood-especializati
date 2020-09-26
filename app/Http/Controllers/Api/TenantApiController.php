@@ -21,9 +21,12 @@ class TenantApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return TenantResource::collection($this->service->getAll());
+        $per_page = (int) $request->get('per_page', 15);
+        $tenants = $this->service->getAll($per_page);
+
+        return TenantResource::collection($tenants);
     }
 
     /**
@@ -55,7 +58,14 @@ class TenantApiController extends Controller
      */
     public function show($uuid)
     {
-        return new TenantResource($this->service->getByUuid($uuid));
+        $tenant = $this->service->getByUuid($uuid);
+
+        if(!$tenant)
+        {
+            return response()->json(['message' => 'Not Found'], 404);
+        }
+
+        return new TenantResource($tenant);
     }
 
     /**
