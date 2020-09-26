@@ -208,3 +208,26 @@ event(TenantCreatedEvent)
 no curso o instrutor fala que é possivel chamar o event até msm em um observer
 
 
+
+
+## API
+
+
+## Lembrar de utilizar Accept application/json no header para funcionar as FormRequest
+
+No curso como foi feito um scopeGlobal para setar o tenant_id nas consultas os Repositories caso for
+utilizar o eloquent tem que remover o scopeGlobal em cada sql
+
+$categories = $this->category->join('tenants', 'tenants.id', 'categories.tenant_id')
+                        ->where('tenants.uuid', $tenantUuid)
+                        ->select('categories.*')
+                        ->withoutGlobalScope(TenantScope::class)
+                        ->get();
+
+
+Outra alternativa, que foi utilizada no curso foi criar um repositorio com o query builder e consequentemente não será utilizado o scopeGlobal
+Essa foi a alternativa feita no curso 
+obs: só precisa utilizar o query builder para as entidades que utiliza o scopeGlobal (Catgorias, produtos, mesas ... etc)
+
+
+
