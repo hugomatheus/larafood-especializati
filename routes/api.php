@@ -30,6 +30,10 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
     Route::post('/client', 'Auth\RegisterController@store');
 
     Route::post('/sanctum/token', 'Auth\AuthClientController@auth');
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::get('/me', 'Auth\AuthClientController@me');
+    });
+
 });
 
 
