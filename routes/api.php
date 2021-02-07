@@ -26,6 +26,8 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
 
     Route::get('/products/{flag}', 'ProductApiController@show');
     Route::get('/products', 'ProductApiController@productsByTenant');
+
+    Route::post('/client', 'Auth\RegisterController@store');
 });
 
 
