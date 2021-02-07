@@ -29,9 +29,9 @@ class ProductRepositoryQueryBuilder implements IProductRepository
         return $products;
     }
 
-    public function getByFlag(string $flag)
+    public function getByUuid(string $uuid)
     {
-        $product = DB::table($this->db_table)->where('flag',$flag)->first();
+        $product = DB::table($this->db_table)->where('uuid',$uuid)->first();
         return $product;
     }
 

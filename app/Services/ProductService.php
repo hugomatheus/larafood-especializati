@@ -19,9 +19,9 @@ class ProductService
         return $this->productRepository->getAllByTenantUuid($tenantUuid, $categories);
     }
 
-    public function getByFlag(string $flag)
+    public function getByUuid(string $uuid)
     {
-        return $this->productRepository->getByFlag($flag);
+        return $this->productRepository->getByUuid($uuid);
     }
 
 

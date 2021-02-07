@@ -22,9 +22,9 @@ class ProductApiController extends Controller
         return ProductResource::collection($products);
     }
 
-    public function show(TenantFormRequest $request, $flag)
+    public function show(TenantFormRequest $request, $identify)
     {
-        $product = $this->productService->getByFlag($flag);
+        $product = $this->productService->getByUuid($identify);
 
         if(!$product)
         {
