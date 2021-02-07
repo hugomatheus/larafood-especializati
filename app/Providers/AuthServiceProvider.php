@@ -37,7 +37,7 @@ class AuthServiceProvider extends ServiceProvider
 
     public function defineAdminGate()
     {
-        Gate::before(function($user){
+        Gate::before(function(User $user){
             if($user->isAdmin()){
                 return true;
             }
