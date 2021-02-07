@@ -15,6 +15,7 @@ class ClientRepository implements IClientRepository
 
     public function createNewClient(array $data)
     {
+        $data['password'] = bcrypt($data['password']);
         return $this->client->create($data);
     }
 
