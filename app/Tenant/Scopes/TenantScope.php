@@ -19,6 +19,10 @@ class TenantScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         $tenantManager = app(ManagerTenant::class);
-        $builder->where('tenant_id', $tenantManager->getTenantIdentify());
+        $identify = $tenantManager->getTenantIdentify();
+        if(!$identify)
+        {
+            $builder->where('tenant_id', $identify);
+        }
     }
 }
