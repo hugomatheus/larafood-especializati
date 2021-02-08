@@ -14,9 +14,21 @@ class OrderRepository implements IOrderRepository {
         $this->order = $order;
     }
 
-    public function createNewOrder(string $identify, float $total, string $status, int $tenantId, $clientId = '', $tableId = '')
+    public function createNewOrder(string $identify, float $total, string $status, int $tenantId, string $comment, $clientId = '', $tableId = '')
     {
-        
+        $data = [
+            'tenant_id' => $tenantId,
+            'identify' => $identify,
+            'total' => $total,
+            'status' => $status,
+            'comment' => $comment,
+        ];
+
+        if ($clientId) $data['client_id'] = $clientId;
+        if ($tableId) $data['table_id'] = $tableId;
+
+        $order = $this->entity->create($data);
+        return $order;
     }
 
     public function getOrderByIdentify(string $identify)
