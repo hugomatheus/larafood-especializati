@@ -30,9 +30,9 @@ class CategoryRepositoryQueryBuilder implements ICategoryRepository
         return $categories;
     }
 
-    public function getByUrl(string $url)
+    public function getByUuid(string $uuid)
     {
-        $category = DB::table($this->db_table)->where('url', $url)->first();
+        $category = DB::table($this->db_table)->where('uuid', $uuid)->first();
         return $category;
     }
 

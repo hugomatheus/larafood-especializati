@@ -17,8 +17,8 @@ class TableService
         return $this->tableRepository->getAllByTenantUuid($tenantUuid);
     }
 
-    public function getByIdentify(string $url)
+    public function getByUuid(string $uuid)
     {
-        return $this->tableRepository->getByIdentify($url);
+        return $this->tableRepository->getByUuid($uuid);
     }
 }

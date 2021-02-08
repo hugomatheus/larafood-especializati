@@ -22,9 +22,9 @@ class TableApiController extends Controller
         return TableResource::collection($tables);
     }
 
-    public function show(TenantFormRequest $request, $identify)
+    public function show(TenantFormRequest $request, $uuid)
     {
-        $table = $this->tableService->getByIdentify($identify);
+        $table = $this->tableService->getByUuid($uuid);
 
         if(!$table)
         {

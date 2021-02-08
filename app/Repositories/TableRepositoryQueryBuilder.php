@@ -29,9 +29,9 @@ class TableRepositoryQueryBuilder implements ITableRepository
         return $tables;
     }
 
-    public function getByIdentify(string $identify)
+    public function getByUuid(string $uuid)
     {
-        $table = DB::table($this->db_table)->where('identify', $identify)->first();
+        $table = DB::table($this->db_table)->where('uuid', $uuid)->first();
         return $table;
     }
 

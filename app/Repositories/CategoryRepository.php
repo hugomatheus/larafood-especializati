@@ -32,9 +32,9 @@ class CategoryRepository implements ICategoryRepository
         return $categories;
     }
 
-    public function getByUrl(string $url)
+    public function getByUuid(string $uuid)
     {
-        $category = $this->category->where('url', $url)->first();
+        $category = $this->category->where('uuid', $uuid)->first();
         return $category;
     }
 
