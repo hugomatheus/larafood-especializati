@@ -9,6 +9,15 @@ class Order extends Model
 {
     use ModelBootTrait;
 
+    const STATUS = [
+        'OPEN' => 'open',
+        'DONE' => 'done',
+        'REJECTED' => 'rejected',
+        'WORKING' => 'working',
+        'CANCELED' => 'canceled',
+        'DELIVERING' => 'delivering'
+    ];
+
     protected $fillable = ['tenant_id', 'identify', 'client_id', 'table_id', 'total', 'status', 'comment'];
 
     public function tenant()
