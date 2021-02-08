@@ -27,12 +27,12 @@ class OrderRepository implements IOrderRepository {
         if ($clientId) $data['client_id'] = $clientId;
         if ($tableId) $data['table_id'] = $tableId;
 
-        $order = $this->entity->create($data);
+        $order = $this->order->create($data);
         return $order;
     }
 
     public function getOrderByIdentify(string $identify)
     {
-
+        return $this->order->where('identify', $identify)->first();
     }
 }
