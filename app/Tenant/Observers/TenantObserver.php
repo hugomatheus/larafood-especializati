@@ -17,7 +17,7 @@ class TenantObserver
     {
         $managerTenant = app(ManagerTenant::class);
         $identify = $managerTenant->getTenantIdentify();
-        
+
         if($identify)
         {
             $model->tenant_id = $identify;
