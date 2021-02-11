@@ -37,7 +37,6 @@ class OrderApiController extends Controller
     public function myOrders()
     {
         $orders = $this->orderService->ordersByClient();
-
         return OrderResource::collection($orders);
     }
 }

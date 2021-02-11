@@ -37,6 +37,12 @@ class OrderRepository implements IOrderRepository {
         return $this->order->where('identify', $identify)->first();
     }
 
+    public function getOrdersByClientId(int $clientId)
+    {
+        $orders = $this->order->where('client_id', $clientId)->paginate();
+        return $orders;
+    }
+
     public function registerProductsOrder(int $orderId, array $products)
     {
 

@@ -28,8 +28,7 @@ class OrderService
     public function ordersByClient()
     {
         $clientId = $this->getClientIdByOrder();
-
-        // return $this->orderRepository->getOrdersByClientId($clientId);
+        return $this->orderRepository->getOrdersByClientId($clientId);
     }
 
     public function getOrderByIdentify(string $identify)
