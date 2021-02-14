@@ -39,6 +39,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
         Route::post('/auth/logout', 'Auth\AuthClientController@logout');
         Route::post('auth/orders', 'OrderApiController@store');
         Route::get('auth/my-orders', 'OrderApiController@myOrders');
+        Route::post('/auth/orders/{identifyOrder}/evaluations', 'EvaluationApiController@store');
     });
 
 });
