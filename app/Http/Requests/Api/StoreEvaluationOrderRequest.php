@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Api;
 
+use App\Repositories\Contracts\IOrderRepository;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreEvaluationOrderRequest extends FormRequest
@@ -13,7 +14,19 @@ class StoreEvaluationOrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        $client = auth()->user();
+
+        if(!$client) {
+            return false;
+        }
+
+        $order = app(IOrderRepository::class)->getOrderByIdentify($this->identifyOrder);
+
+        if(!$order) {
+            return false;
+        }
+
+        return $client->id == $order->client_id;
     }
 
     /**
