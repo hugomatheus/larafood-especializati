@@ -231,3 +231,6 @@ obs: só precisa utilizar o query builder para as entidades que utiliza o scopeG
 
 
 
+## Test
+
+php artisan make:factory PlanFactory --model=Models/Plan
