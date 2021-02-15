@@ -46,6 +46,12 @@ class AuthServiceProvider extends ServiceProvider
 
     public function definePermissionsGates()
     {
+
+        if($this->app->runningInConsole())
+        {
+            return;
+        }
+
         $permissions = Permission::all();
 
         foreach($permissions as $permission)
